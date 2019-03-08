@@ -1,0 +1,689 @@
+@prefix : <http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.ida.liu.se/ontologies/ice-hockey-ontology> .
+
+<http://www.ida.liu.se/ontologies/ice-hockey-ontology> rdf:type owl:Ontology ;
+                                                        owl:imports <http://www.w3.org/2006/time#2016> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://webprotege.stanford.edu/R9Nxw4673iJct9s1E5ayK4r
+<http://webprotege.stanford.edu/R9Nxw4673iJct9s1E5ayK4r> rdf:type owl:AnnotationProperty ;
+                                                         rdfs:label "has-away-team" .
+
+
+###  http://webprotege.stanford.edu/RBIVBbBPOMP4cqB5H7VUL3D
+<http://webprotege.stanford.edu/RBIVBbBPOMP4cqB5H7VUL3D> rdf:type owl:AnnotationProperty ;
+                                                         rdfs:label "has-home-team" .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://webprotege.stanford.edu/occured-in-period
+<http://webprotege.stanford.edu/occured-in-period> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                   rdfs:domain :Game-event ;
+                                                   rdfs:range <http://webprotege.stanford.edu/Period> ;
+                                                   rdfs:label "occursInPeriod" .
+
+
+###  http://webprotege.stanford.edu/shot-taken-by
+<http://webprotege.stanford.edu/shot-taken-by> rdf:type owl:ObjectProperty ;
+                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                               rdfs:domain <http://webprotege.stanford.edu/Shot-event> ;
+                                               rdfs:label "shot-taken-by" .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#contains-team
+:contains-team rdf:type owl:ObjectProperty ;
+               owl:inverseOf :plays-in-league .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-team
+:has-away-team rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :has-participating-team .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-team-roster
+:has-away-team-roster rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :has-team-roster .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-game-event
+:has-game-event rdf:type owl:ObjectProperty ;
+                rdfs:domain :Game ;
+                rdfs:range :Game-event .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-team
+:has-home-team rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :has-participating-team .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-team-roster
+:has-home-team-roster rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :has-team-roster .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-participating-team
+:has-participating-team rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-player
+:has-player rdf:type owl:ObjectProperty ;
+            rdfs:domain :Team ;
+            rdfs:range :Player .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-player-on-roster
+:has-player-on-roster rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-season
+:has-season rdf:type owl:ObjectProperty ;
+            owl:inverseOf :is-season-for .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-season-game
+:has-season-game rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :is-game-for-season .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-roster
+:has-team-roster rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-game-for-season
+:is-game-for-season rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-season-for
+:is-season-for rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#plays-in-league
+:plays-in-league rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#plays-in-season-for-league
+:plays-in-season-for-league rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://webprotege.stanford.edu/has-event-time
+<http://webprotege.stanford.edu/has-event-time> rdf:type owl:DatatypeProperty ;
+                                                rdfs:subPropertyOf owl:topDataProperty ;
+                                                rdfs:domain <http://webprotege.stanford.edu/Event> ;
+                                                rdfs:label "has-event-time" .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-end-year
+:has-end-year rdf:type owl:DatatypeProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-league-name
+:has-league-name rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :has-name .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-name
+:has-name rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-person-name
+:has-person-name rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :has-name .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-shirt-number
+:has-shirt-number rdf:type owl:DatatypeProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-start-year
+:has-start-year rdf:type owl:DatatypeProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-name
+:has-team-name rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :has-name .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://webprotege.stanford.edu/Action-event
+<http://webprotege.stanford.edu/Action-event> rdf:type owl:Class ;
+                                              rdfs:subClassOf :Game-event ;
+                                              rdfs:label "Action-event" .
+
+
+###  http://webprotege.stanford.edu/Blocked-shot-event
+<http://webprotege.stanford.edu/Blocked-shot-event> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://webprotege.stanford.edu/Shot-event> ;
+                                                    rdfs:label "Blocked-shot-event" .
+
+
+###  http://webprotege.stanford.edu/Early-intermission-end
+<http://webprotege.stanford.edu/Early-intermission-end> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/End-event> ;
+                                                        rdfs:label "Early-intermission-end" .
+
+
+###  http://webprotege.stanford.edu/Early-intermission-start
+<http://webprotege.stanford.edu/Early-intermission-start> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://webprotege.stanford.edu/Start-event> ;
+                                                          rdfs:label "Early-intermission-start" .
+
+
+###  http://webprotege.stanford.edu/End-event
+<http://webprotege.stanford.edu/End-event> rdf:type owl:Class ;
+                                           rdfs:subClassOf :Game-event ;
+                                           rdfs:label "End-event" .
+
+
+###  http://webprotege.stanford.edu/Event
+<http://webprotege.stanford.edu/Event> rdf:type owl:Class ;
+                                       rdfs:label "Event" .
+
+
+###  http://webprotege.stanford.edu/Faceoff
+<http://webprotege.stanford.edu/Faceoff> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ;
+                                         rdfs:label "Faceoff" .
+
+
+###  http://webprotege.stanford.edu/Fighting
+<http://webprotege.stanford.edu/Fighting> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
+                                          rdfs:label "Fighting" .
+
+
+###  http://webprotege.stanford.edu/Game-end
+<http://webprotege.stanford.edu/Game-end> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://webprotege.stanford.edu/End-event> ;
+                                          rdfs:label "Game-end" .
+
+
+###  http://webprotege.stanford.edu/Game-misconduct
+<http://webprotege.stanford.edu/Game-misconduct> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
+                                                 rdfs:label "Game-misconduct" .
+
+
+###  http://webprotege.stanford.edu/Game-off
+<http://webprotege.stanford.edu/Game-off> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://webprotege.stanford.edu/End-event> ;
+                                          rdfs:label "Game-off" .
+
+
+###  http://webprotege.stanford.edu/Giveaway
+<http://webprotege.stanford.edu/Giveaway> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ;
+                                          rdfs:label "Giveaway" .
+
+
+###  http://webprotege.stanford.edu/Hi-sticking
+<http://webprotege.stanford.edu/Hi-sticking> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
+                                             rdfs:label "Hi-sticking" .
+
+
+###  http://webprotege.stanford.edu/Hit
+<http://webprotege.stanford.edu/Hit> rdf:type owl:Class ;
+                                     rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ;
+                                     rdfs:label "Hit" .
+
+
+###  http://webprotege.stanford.edu/Misconduct
+<http://webprotege.stanford.edu/Misconduct> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
+                                            rdfs:label "Misconduct" .
+
+
+###  http://webprotege.stanford.edu/Missed-shot-event
+<http://webprotege.stanford.edu/Missed-shot-event> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://webprotege.stanford.edu/Shot-event> ;
+                                                   rdfs:label "Missed-shot-event" .
+
+
+###  http://webprotege.stanford.edu/Penalty-event
+<http://webprotege.stanford.edu/Penalty-event> rdf:type owl:Class ;
+                                               rdfs:subClassOf :Game-event ;
+                                               rdfs:label "Penalty-event" .
+
+
+###  http://webprotege.stanford.edu/Penalty-type
+<http://webprotege.stanford.edu/Penalty-type> rdf:type owl:Class ;
+                                              rdfs:label "Penalty-type" .
+
+
+###  http://webprotege.stanford.edu/Period
+<http://webprotege.stanford.edu/Period> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://www.w3.org/2006/time#ProperInterval> ;
+                                        rdfs:label "Period" .
+
+
+###  http://webprotege.stanford.edu/Period-end
+<http://webprotege.stanford.edu/Period-end> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://webprotege.stanford.edu/End-event> ;
+                                            rdfs:label "Period-end" .
+
+
+###  http://webprotege.stanford.edu/Period-start
+<http://webprotege.stanford.edu/Period-start> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://webprotege.stanford.edu/Start-event> ;
+                                              rdfs:label "Period-start" .
+
+
+###  http://webprotege.stanford.edu/Period1
+<http://webprotege.stanford.edu/Period1> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://webprotege.stanford.edu/Period> ;
+                                         rdfs:label "Period1" .
+
+
+###  http://webprotege.stanford.edu/Period2
+<http://webprotege.stanford.edu/Period2> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://webprotege.stanford.edu/Period> ;
+                                         rdfs:label "Period2" .
+
+
+###  http://webprotege.stanford.edu/Period3
+<http://webprotege.stanford.edu/Period3> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://webprotege.stanford.edu/Period> ;
+                                         rdfs:label "Period3" .
+
+
+###  http://webprotege.stanford.edu/Shot-event
+<http://webprotege.stanford.edu/Shot-event> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ;
+                                            rdfs:label "Shot-event" .
+
+
+###  http://webprotege.stanford.edu/Shot-on-goal-event
+<http://webprotege.stanford.edu/Shot-on-goal-event> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://webprotege.stanford.edu/Shot-event> ;
+                                                    rdfs:label "Shot-on-goal-event" .
+
+
+###  http://webprotege.stanford.edu/Start-event
+<http://webprotege.stanford.edu/Start-event> rdf:type owl:Class ;
+                                             rdfs:subClassOf :Game-event ;
+                                             rdfs:label "Start-event" .
+
+
+###  http://webprotege.stanford.edu/Takeaway
+<http://webprotege.stanford.edu/Takeaway> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ;
+                                          rdfs:label "Takeaway" .
+
+
+###  http://webprotege.stanford.edu/Tripping
+<http://webprotege.stanford.edu/Tripping> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
+                                          rdfs:label "Tripping" .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Assistant-coach
+:Assistant-coach rdf:type owl:Class ;
+                 rdfs:subClassOf :Coach .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Assistant-general-manager
+:Assistant-general-manager rdf:type owl:Class ;
+                           rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Center
+:Center rdf:type owl:Class ;
+        rdfs:subClassOf :Forward .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Chairperson
+:Chairperson rdf:type owl:Class ;
+             rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Coach
+:Coach rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Conditioning-coach
+:Conditioning-coach rdf:type owl:Class ;
+                    rdfs:subClassOf :Coach .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Defender
+:Defender rdf:type owl:Class ;
+          rdfs:subClassOf :Player .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Equipment-manager
+:Equipment-manager rdf:type owl:Class ;
+                   rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Forward
+:Forward rdf:type owl:Class ;
+         rdfs:subClassOf :Player .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Game
+:Game rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-game-event ;
+                        owl:someValuesFrom :Game-event
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-away-team ;
+                        owl:allValuesFrom :Team
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-away-team-roster ;
+                        owl:allValuesFrom :Team-roster-for-game
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-home-team ;
+                        owl:allValuesFrom :Team
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-home-team-roster ;
+                        owl:allValuesFrom :Team-roster-for-game
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :is-game-for-season ;
+                        owl:allValuesFrom :Season-for-league
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-away-team ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Team
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-away-team-roster ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Team-roster-for-game
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-home-team ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Team
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-home-team-roster ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Team-roster-for-game
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :is-game-for-season ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Season-for-league
+                      ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Game-event
+:Game-event rdf:type owl:Class ;
+            rdfs:subClassOf <http://webprotege.stanford.edu/Event> ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://webprotege.stanford.edu/occured-in-period> ;
+                              owl:someValuesFrom <http://webprotege.stanford.edu/Period>
+                            ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#General-manager
+:General-manager rdf:type owl:Class ;
+                 rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Goalkeeper
+:Goalkeeper rdf:type owl:Class ;
+            rdfs:subClassOf :Player .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Goaltending-coach
+:Goaltending-coach rdf:type owl:Class ;
+                   rdfs:subClassOf :Coach .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Head-coach
+:Head-coach rdf:type owl:Class ;
+            rdfs:subClassOf :Coach .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#League
+:League rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-season ;
+                          owl:someValuesFrom :Season-for-league
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-season ;
+                          owl:allValuesFrom :Season-for-league
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-league-name ;
+                          owl:allValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-league-name ;
+                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Left-Wing
+:Left-Wing rdf:type owl:Class ;
+           rdfs:subClassOf :Forward .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-person-name ;
+                          owl:allValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-person-name ;
+                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Player
+:Player rdf:type owl:Class ;
+        rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Player-on-roster
+:Player-on-roster rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty :has-player ;
+                                    owl:someValuesFrom :Player
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :has-player ;
+                                    owl:allValuesFrom :Player
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :has-shirt-number ;
+                                    owl:allValuesFrom xsd:integer
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :has-shirt-number ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:integer
+                                  ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Playoff-game
+:Playoff-game rdf:type owl:Class ;
+              rdfs:subClassOf :Game .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Preseason-game
+:Preseason-game rdf:type owl:Class ;
+                rdfs:subClassOf :Game .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#President
+:President rdf:type owl:Class ;
+           rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Referee
+:Referee rdf:type owl:Class ;
+         rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Regular-season-game
+:Regular-season-game rdf:type owl:Class ;
+                     rdfs:subClassOf :Game .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Right-Wing
+:Right-Wing rdf:type owl:Class ;
+            rdfs:subClassOf :Forward .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Scout
+:Scout rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Season-for-league
+:Season-for-league rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty :contains-team ;
+                                     owl:someValuesFrom :Team
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :has-season-game ;
+                                     owl:someValuesFrom :Game
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :contains-team ;
+                                     owl:allValuesFrom :Team
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :has-season-game ;
+                                     owl:allValuesFrom :Game
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :is-season-for ;
+                                     owl:allValuesFrom :League
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :is-season-for ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :League
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :has-end-year ;
+                                     owl:allValuesFrom xsd:integer
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :has-start-year ;
+                                     owl:allValuesFrom xsd:integer
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :has-end-year ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:integer
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :has-start-year ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:integer
+                                   ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team
+:Team rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-player ;
+                        owl:someValuesFrom :Player
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :plays-in-season-for-league ;
+                        owl:someValuesFrom :Season-for-league
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :plays-in-season-for-league ;
+                        owl:allValuesFrom :Season-for-league
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-team-name ;
+                        owl:allValuesFrom xsd:string
+                      ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-physician
+:Team-physician rdf:type owl:Class ;
+                rdfs:subClassOf :Person .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-roster
+:Team-roster rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :has-player-on-roster ;
+                               owl:someValuesFrom :Player-on-roster
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :has-player-on-roster ;
+                               owl:allValuesFrom :Player-on-roster
+                             ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-roster-for-game
+:Team-roster-for-game rdf:type owl:Class ;
+                      rdfs:subClassOf :Team-roster ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :has-season-game ;
+                                        owl:allValuesFrom :Game
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :has-season-game ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass :Game
+                                      ] ;
+                      owl:disjointWith :Team-roster-for-season .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-roster-for-season
+:Team-roster-for-season rdf:type owl:Class ;
+                        rdfs:subClassOf :Team-roster ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :has-season ;
+                                          owl:allValuesFrom :Season-for-league
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :has-season ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :Season-for-league
+                                        ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Video-coach
+:Video-coach rdf:type owl:Class ;
+             rdfs:subClassOf :Coach .
+
+
+###  https://www.ida.liu.se/research/sportsanalytics/2019/2/ice-hockey.owl#Overtime
+<https://www.ida.liu.se/research/sportsanalytics/2019/2/ice-hockey.owl#Overtime> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <http://webprotege.stanford.edu/Period> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
