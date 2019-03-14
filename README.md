@@ -13,17 +13,26 @@
 
 ## Player performance metrics
 For all players in a specific season, answer the following questions:
-
+### For a team
+- [ ] Get the number of games played for a team in a season (GP). *not solved yet*
+- [ ] Get the total points for a team in a season (TP). *not solved yet*
+- [ ] Get the number of goals for a team (G). *not solved yet*
+- [ ] Get the number of plus-minus (+/-) of a team *not solved yet*
+- [ ] Get the number of goals against (GA) of a team *not solved yet*
+### For a skater
 - [x] Get the number of goals (G).
 - [x] Get the number of assists (A).
 - [x] Get the total points (TP).
 - [x] Get the number of game-winning goals (GWG).
 - [x] Get the number of powerplay goals (PPG).
-- [x] Get the number of shots on goal (SOG).
 - [x] Get the number of hits.
 - [x] Get the total penalty minutes (PIM).
 - [x] Get the number of games played (GP).
 - [ ] Get the time on ice (TOI) *not solved yet*
 - [ ] Get the number of plus-minus (+/-) of a skater *not solved yet*
+### For a goaltender
+- [x] Get the number of shots on goal (SOG).
 - [ ] Get the number of goals against (GA) of a goaltender *not solved yet*
 - [ ] Get the number of goals-against average (GAA=GA*60/TOI) *not solved yet*
+- [ ] Get the number of shot saved (SVS) of a goaltender *not solved yet*
+- [ ] Get the number of save percentage (SVS%=SVS/SOG) *not solved yet*
