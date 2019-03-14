@@ -24,3 +24,6 @@ For all players in a specific season, answer the following questions:
 - [x] Get the total penalty minutes (PIM).
 - [x] Get the number of games played (GP).
 - [ ] Get the time on ice (TOI) *not solved yet*
+- [ ] Get the number of plus-minus (+/-) of a skater *not solved yet*
+- [ ] Get the number of goals against (GA) of a goaltender *not solved yet*
+- [ ] Get the number of goals-against average (GAA=GA*60/TOI) *not solved yet*
