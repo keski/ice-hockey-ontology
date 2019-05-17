@@ -42,78 +42,114 @@
                                                rdfs:label "shot-taken-by" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#contains-team
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#attackingTeam
+:attackingTeam rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#awayPlayer
+:awayPlayer rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#byTeam
+:byTeam rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defendingTeam
+:defendingTeam rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#homePlayer
+:homePlayer rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#shootingPlayer
+:shootingPlayer rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#substitutedPlayer
+:substitutedPlayer rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#substitutingPlayer
+:substitutingPlayer rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#winningTeam
+:winningTeam rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#contains-team
 :contains-team rdf:type owl:ObjectProperty ;
                owl:inverseOf :plays-in-league .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-team
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-away-team
 :has-away-team rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :has-participating-team .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-team-roster
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-away-team-roster
 :has-away-team-roster rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf :has-team-roster .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-game-event
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-game-event
 :has-game-event rdf:type owl:ObjectProperty ;
                 rdfs:domain :Game ;
                 rdfs:range :Game-event .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-team
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-home-team
 :has-home-team rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :has-participating-team .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-team-roster
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-home-team-roster
 :has-home-team-roster rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf :has-team-roster .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-participating-team
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-participating-team
 :has-participating-team rdf:type owl:ObjectProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-player
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-player
 :has-player rdf:type owl:ObjectProperty ;
             rdfs:domain :Team ;
             rdfs:range :Player .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-player-on-roster
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-player-on-roster
 :has-player-on-roster rdf:type owl:ObjectProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-season
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-season
 :has-season rdf:type owl:ObjectProperty ;
             owl:inverseOf :is-season-for .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-season-game
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-season-game
 :has-season-game rdf:type owl:ObjectProperty ;
                  owl:inverseOf :is-game-for-season .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-roster
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-team-roster
 :has-team-roster rdf:type owl:ObjectProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-game-for-season
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#is-game-for-season
 :is-game-for-season rdf:type owl:ObjectProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-season-for
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#is-season-for
 :is-season-for rdf:type owl:ObjectProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#plays-in-league
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#plays-in-league
 :plays-in-league rdf:type owl:ObjectProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#plays-in-season-for-league
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#plays-in-season-for-league
 :plays-in-season-for-league rdf:type owl:ObjectProperty .
 
 
@@ -128,34 +164,34 @@
                                                 rdfs:label "has-event-time" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-end-year
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-end-year
 :has-end-year rdf:type owl:DatatypeProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-league-name
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-league-name
 :has-league-name rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf :has-name .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-name
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-name
 :has-name rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-person-name
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-person-name
 :has-person-name rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf :has-name .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-shirt-number
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-shirt-number
 :has-shirt-number rdf:type owl:DatatypeProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-start-year
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-start-year
 :has-start-year rdf:type owl:DatatypeProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-name
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-team-name
 :has-team-name rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf :has-name .
 
@@ -201,7 +237,20 @@
 
 ###  http://webprotege.stanford.edu/Faceoff
 <http://webprotege.stanford.edu/Faceoff> rdf:type owl:Class ;
-                                         rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ;
+                                         rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :awayPlayer ;
+                                                           owl:allValuesFrom :Player-on-roster
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :homePlayer ;
+                                                           owl:allValuesFrom :Player-on-roster
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :winningTeam ;
+                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                           owl:onClass :Team
+                                                         ] ;
                                          rdfs:label "Faceoff" .
 
 
@@ -308,7 +357,22 @@
 
 ###  http://webprotege.stanford.edu/Shot-event
 <http://webprotege.stanford.edu/Shot-event> rdf:type owl:Class ;
-                                            rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ;
+                                            rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :attackingTeam ;
+                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass :Team
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :defendingTeam ;
+                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass :Team
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :shootingPlayer ;
+                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass :Player-on-roster
+                                                            ] ;
                                             rdfs:label "Shot-event" .
 
 
@@ -336,52 +400,70 @@
                                           rdfs:label "Tripping" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Assistant-coach
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Shift
+:Shift rdf:type owl:Class ;
+       rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :substitutedPlayer ;
+                         owl:someValuesFrom :Player-on-roster
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :substitutingPlayer ;
+                         owl:someValuesFrom :Player-on-roster
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :byTeam ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Team
+                       ] .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Assistant-coach
 :Assistant-coach rdf:type owl:Class ;
                  rdfs:subClassOf :Coach .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Assistant-general-manager
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Assistant-general-manager
 :Assistant-general-manager rdf:type owl:Class ;
                            rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Center
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Center
 :Center rdf:type owl:Class ;
         rdfs:subClassOf :Forward .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Chairperson
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Chairperson
 :Chairperson rdf:type owl:Class ;
              rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Coach
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Coach
 :Coach rdf:type owl:Class ;
        rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Conditioning-coach
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Conditioning-coach
 :Conditioning-coach rdf:type owl:Class ;
                     rdfs:subClassOf :Coach .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Defender
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Defender
 :Defender rdf:type owl:Class ;
           rdfs:subClassOf :Player .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Equipment-manager
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Equipment-manager
 :Equipment-manager rdf:type owl:Class ;
                    rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Forward
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Forward
 :Forward rdf:type owl:Class ;
          rdfs:subClassOf :Player .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Game
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Game
 :Game rdf:type owl:Class ;
       rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:onProperty :has-game-event ;
@@ -434,36 +516,46 @@
                       ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Game-event
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Game-event
 :Game-event rdf:type owl:Class ;
             rdfs:subClassOf <http://webprotege.stanford.edu/Event> ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty <http://webprotege.stanford.edu/occured-in-period> ;
                               owl:someValuesFrom <http://webprotege.stanford.edu/Period>
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://www.w3.org/2006/time#dayOfWeek> ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass <http://www.w3.org/2006/time#DayOfWeek>
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://www.w3.org/2006/time#timeZone> ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass <http://www.w3.org/2006/time#TimeZone>
                             ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#General-manager
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#General-manager
 :General-manager rdf:type owl:Class ;
                  rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Goalkeeper
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goalkeeper
 :Goalkeeper rdf:type owl:Class ;
             rdfs:subClassOf :Player .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Goaltending-coach
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goaltending-coach
 :Goaltending-coach rdf:type owl:Class ;
                    rdfs:subClassOf :Coach .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Head-coach
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Head-coach
 :Head-coach rdf:type owl:Class ;
             rdfs:subClassOf :Coach .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#League
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#League
 :League rdf:type owl:Class ;
         rdfs:subClassOf [ rdf:type owl:Restriction ;
                           owl:onProperty :has-season ;
@@ -484,12 +576,12 @@
                         ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Left-Wing
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Left-Wing
 :Left-Wing rdf:type owl:Class ;
            rdfs:subClassOf :Forward .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Person
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Person
 :Person rdf:type owl:Class ;
         rdfs:subClassOf [ rdf:type owl:Restriction ;
                           owl:onProperty :has-person-name ;
@@ -502,12 +594,12 @@
                         ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Player
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Player
 :Player rdf:type owl:Class ;
         rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Player-on-roster
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Player-on-roster
 :Player-on-roster rdf:type owl:Class ;
                   rdfs:subClassOf [ rdf:type owl:Restriction ;
                                     owl:onProperty :has-player ;
@@ -528,42 +620,42 @@
                                   ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Playoff-game
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Playoff-game
 :Playoff-game rdf:type owl:Class ;
               rdfs:subClassOf :Game .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Preseason-game
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Preseason-game
 :Preseason-game rdf:type owl:Class ;
                 rdfs:subClassOf :Game .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#President
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#President
 :President rdf:type owl:Class ;
            rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Referee
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Referee
 :Referee rdf:type owl:Class ;
          rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Regular-season-game
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Regular-season-game
 :Regular-season-game rdf:type owl:Class ;
                      rdfs:subClassOf :Game .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Right-Wing
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Right-Wing
 :Right-Wing rdf:type owl:Class ;
             rdfs:subClassOf :Forward .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Scout
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Scout
 :Scout rdf:type owl:Class ;
        rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Season-for-league
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Season-for-league
 :Season-for-league rdf:type owl:Class ;
                    rdfs:subClassOf [ rdf:type owl:Restriction ;
                                      owl:onProperty :contains-team ;
@@ -610,7 +702,7 @@
                                    ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Team
 :Team rdf:type owl:Class ;
       rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:onProperty :has-player ;
@@ -630,12 +722,12 @@
                       ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-physician
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Team-physician
 :Team-physician rdf:type owl:Class ;
                 rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-roster
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Team-roster
 :Team-roster rdf:type owl:Class ;
              rdfs:subClassOf [ rdf:type owl:Restriction ;
                                owl:onProperty :has-player-on-roster ;
@@ -647,7 +739,7 @@
                              ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-roster-for-game
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Team-roster-for-game
 :Team-roster-for-game rdf:type owl:Class ;
                       rdfs:subClassOf :Team-roster ,
                                       [ rdf:type owl:Restriction ;
@@ -662,7 +754,7 @@
                       owl:disjointWith :Team-roster-for-season .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-roster-for-season
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Team-roster-for-season
 :Team-roster-for-season rdf:type owl:Class ;
                         rdfs:subClassOf :Team-roster ,
                                         [ rdf:type owl:Restriction ;
@@ -676,7 +768,7 @@
                                         ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Video-coach
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Video-coach
 :Video-coach rdf:type owl:Class ;
              rdfs:subClassOf :Coach .
 
