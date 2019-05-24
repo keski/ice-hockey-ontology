@@ -23,6 +23,14 @@
                                                          rdfs:label "has-home-team" .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directlyFollowedBy
+:directlyFollowedBy rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directlyPrecededBy
+:directlyPrecededBy rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Object Properties
 #################################################################
@@ -42,45 +50,25 @@
                                                rdfs:label "shot-taken-by" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#attackingTeam
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#attackingTeam
 :attackingTeam rdf:type owl:ObjectProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#awayPlayer
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#awayPlayer
 :awayPlayer rdf:type owl:ObjectProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#byTeam
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#byTeam
 :byTeam rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defendingTeam
-:defendingTeam rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#homePlayer
-:homePlayer rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#shootingPlayer
-:shootingPlayer rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#substitutedPlayer
-:substitutedPlayer rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#substitutingPlayer
-:substitutingPlayer rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#winningTeam
-:winningTeam rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#contains-team
 :contains-team rdf:type owl:ObjectProperty ;
                owl:inverseOf :plays-in-league .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#defendingTeam
+:defendingTeam rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-away-team
@@ -137,6 +125,10 @@
 :has-team-roster rdf:type owl:ObjectProperty .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#homePlayer
+:homePlayer rdf:type owl:ObjectProperty .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#is-game-for-season
 :is-game-for-season rdf:type owl:ObjectProperty .
 
@@ -151,6 +143,22 @@
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#plays-in-season-for-league
 :plays-in-season-for-league rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#shootingPlayer
+:shootingPlayer rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#substitutedPlayer
+:substitutedPlayer rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#substitutingPlayer
+:substitutingPlayer rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#winningTeam
+:winningTeam rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -203,6 +211,12 @@
 ###  http://webprotege.stanford.edu/Action-event
 <http://webprotege.stanford.edu/Action-event> rdf:type owl:Class ;
                                               rdfs:subClassOf :Game-event ;
+                                              :directlyFollowedBy <http://webprotege.stanford.edu/Action-event> ,
+                                                                  <http://webprotege.stanford.edu/End-event> ,
+                                                                  <http://webprotege.stanford.edu/Penalty-event> ;
+                                              :directlyPrecededBy <http://webprotege.stanford.edu/Action-event> ,
+                                                                  <http://webprotege.stanford.edu/Penalty-event> ,
+                                                                  <http://webprotege.stanford.edu/Start-event> ;
                                               rdfs:label "Action-event" .
 
 
@@ -227,6 +241,8 @@
 ###  http://webprotege.stanford.edu/End-event
 <http://webprotege.stanford.edu/End-event> rdf:type owl:Class ;
                                            rdfs:subClassOf :Game-event ;
+                                           :directlyPrecededBy <http://webprotege.stanford.edu/Action-event> ,
+                                                               <http://webprotege.stanford.edu/Penalty-event> ;
                                            rdfs:label "End-event" .
 
 
@@ -311,6 +327,9 @@
 ###  http://webprotege.stanford.edu/Penalty-event
 <http://webprotege.stanford.edu/Penalty-event> rdf:type owl:Class ;
                                                rdfs:subClassOf :Game-event ;
+                                               :directlyFollowedBy <http://webprotege.stanford.edu/Action-event> ,
+                                                                   <http://webprotege.stanford.edu/End-event> ;
+                                               :directlyPrecededBy <http://webprotege.stanford.edu/Action-event> ;
                                                rdfs:label "Penalty-event" .
 
 
@@ -385,6 +404,7 @@
 ###  http://webprotege.stanford.edu/Start-event
 <http://webprotege.stanford.edu/Start-event> rdf:type owl:Class ;
                                              rdfs:subClassOf :Game-event ;
+                                             :directlyFollowedBy <http://webprotege.stanford.edu/Action-event> ;
                                              rdfs:label "Start-event" .
 
 
@@ -398,24 +418,6 @@
 <http://webprotege.stanford.edu/Tripping> rdf:type owl:Class ;
                                           rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
                                           rdfs:label "Tripping" .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Shift
-:Shift rdf:type owl:Class ;
-       rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :substitutedPlayer ;
-                         owl:someValuesFrom :Player-on-roster
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :substitutingPlayer ;
-                         owl:someValuesFrom :Player-on-roster
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :byTeam ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Team
-                       ] .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Assistant-coach
@@ -702,6 +704,25 @@
                                    ] .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Shift
+:Shift rdf:type owl:Class ;
+       rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :substitutedPlayer ;
+                         owl:someValuesFrom :Player-on-roster
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :substitutingPlayer ;
+                         owl:someValuesFrom :Player-on-roster
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :byTeam ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Team
+                       ] ;
+       rdfs:label "Shift" .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Team
 :Team rdf:type owl:Class ;
       rdfs:subClassOf [ rdf:type owl:Restriction ;
@@ -778,4 +799,4 @@
                                                                                  rdfs:subClassOf <http://webprotege.stanford.edu/Period> .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
