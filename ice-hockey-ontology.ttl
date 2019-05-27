@@ -23,11 +23,11 @@
                                                          rdfs:label "has-home-team" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directlyFollowedBy
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#directlyFollowedBy
 :directlyFollowedBy rdf:type owl:AnnotationProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directlyPrecededBy
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#directlyPrecededBy
 :directlyPrecededBy rdf:type owl:AnnotationProperty .
 
 
@@ -48,6 +48,14 @@
                                                rdfs:subPropertyOf owl:topObjectProperty ;
                                                rdfs:domain <http://webprotege.stanford.edu/Shot-event> ;
                                                rdfs:label "shot-taken-by" .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defendingNTeam-hasbench
+:defendingNTeam-hasbench rdf:type owl:ObjectProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defendingSTeam-hasbench
+:defendingSTeam-hasbench rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#attackingTeam
@@ -93,17 +101,6 @@
 :has-faceoff-zone rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :has-zone .
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-zone
-:has-zone rdf:type owl:ObjectProperty .
-
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#located-in
-:located-in rdf:type owl:ObjectProperty .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#partOf
-:partOf rdf:type owl:ObjectProperty .
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-game-event
 :has-game-event rdf:type owl:ObjectProperty ;
@@ -149,6 +146,10 @@
 :has-team-roster rdf:type owl:ObjectProperty .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-zone
+:has-zone rdf:type owl:ObjectProperty .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#homePlayer
 :homePlayer rdf:type owl:ObjectProperty .
 
@@ -159,6 +160,14 @@
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#is-season-for
 :is-season-for rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#located-in
+:located-in rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#partOf
+:partOf rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#plays-in-league
@@ -189,27 +198,6 @@
 #    Data properties
 #################################################################
 
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-length
-:has-length rdf:type owl:DatatypeProperty .
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-radius
-:has-radius rdf:type owl:DatatypeProperty .
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-width
-:has-width rdf:type owl:DatatypeProperty .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-x-coordinate
-:has-x-coordinate rdf:type owl:DatatypeProperty .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-y-coordinate
-:has-y-coordinate rdf:type owl:DatatypeProperty .
-
-
-
-
 ###  http://webprotege.stanford.edu/has-event-time
 <http://webprotege.stanford.edu/has-event-time> rdf:type owl:DatatypeProperty ;
                                                 rdfs:subPropertyOf owl:topDataProperty ;
@@ -226,6 +214,10 @@
                  rdfs:subPropertyOf :has-name .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-length
+:has-length rdf:type owl:DatatypeProperty .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-name
 :has-name rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty .
@@ -234,6 +226,10 @@
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-person-name
 :has-person-name rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf :has-name .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-radius
+:has-radius rdf:type owl:DatatypeProperty .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-shirt-number
@@ -247,6 +243,18 @@
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-team-name
 :has-team-name rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf :has-name .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-width
+:has-width rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-x-coordinate
+:has-x-coordinate rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-y-coordinate
+:has-y-coordinate rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -299,17 +307,22 @@
 ###  http://webprotege.stanford.edu/Faceoff
 <http://webprotege.stanford.edu/Faceoff> rdf:type owl:Class ;
                                          rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ,
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :awayPlayer ;
-                                                            owl:allValuesFrom :Player-on-roster
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :awayPlayer ;
+                                                           owl:allValuesFrom :Player-on-roster
                                                          ] ,
                                                          [ rdf:type owl:Restriction ;
                                                            owl:onProperty :has-faceoff-zone ;
                                                            owl:allValuesFrom :Faceoff-Zone
-                                                          ] ,
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :homePlayer ;
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :homePlayer ;
                                                            owl:allValuesFrom :Player-on-roster
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :has-faceoff-zone ;
+                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                           owl:onClass :Faceoff-Zone
                                                          ] ,
                                                          [ rdf:type owl:Restriction ;
                                                            owl:onProperty :winningTeam ;
@@ -469,8 +482,19 @@
                                           rdfs:label "Tripping" .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Arena
-:Arena rdf:type owl:Class .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Zone
+:Zone rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Assistant-coach
+:Assistant-coach rdf:type owl:Class ;
+                 rdfs:subClassOf :Coach .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Assistant-general-manager
+:Assistant-general-manager rdf:type owl:Class ;
+                           rdfs:subClassOf :Person .
+
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Bench-Zone
 :Bench-Zone rdf:type owl:Class ;
@@ -497,13 +521,40 @@
        rdfs:subClassOf :On-Ice-Object .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Assistant-coach
-:Assistant-coach rdf:type owl:Class ;
-                 rdfs:subClassOf :Coach .
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Center
+:Center rdf:type owl:Class ;
+        rdfs:subClassOf :Forward .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Chairperson
+:Chairperson rdf:type owl:Class ;
+             rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Coach
+:Coach rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Conditioning-coach
+:Conditioning-coach rdf:type owl:Class ;
+                    rdfs:subClassOf :Coach .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Defender
+:Defender rdf:type owl:Class ;
+          rdfs:subClassOf :Player .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Equipment-manager
+:Equipment-manager rdf:type owl:Class ;
+                   rdfs:subClassOf :Person .
+
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Faceoff-Zone
 :Faceoff-Zone rdf:type owl:Class ;
-              rdfs:subClassOf :On-Ice-Zone .
+              rdfs:subClassOf :On-Ice-Zone ;
+              rdfs:comment "There are nine faceoff zones totally." .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Faceoff-Zone-C
@@ -637,208 +688,6 @@
                            rdfs:subClassOf :Overtime-Period .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Frame
-:Goal-Frame rdf:type owl:Class ;
-            rdfs:subClassOf :On-Ice-Object .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Net
-:Goal-Net rdf:type owl:Class ;
-          rdfs:subClassOf :On-Ice-Object .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Zone
-:Goal-Zone rdf:type owl:Class ;
-           rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Zone-N
-:Goal-Zone-N rdf:type owl:Class ;
-             rdfs:subClassOf :Goal-Zone ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :located-in ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Zone-NE
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :located-in ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Zone-NW
-                             ] .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Zone-S
-:Goal-Zone-S rdf:type owl:Class ;
-             rdfs:subClassOf :Goal-Zone ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :located-in ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Zone-SE
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :located-in ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Zone-SW
-                             ] .
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Moorings
-:Moorings rdf:type owl:Class ;
-          rdfs:subClassOf :On-Ice-Object .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Off-Ice-Object
-:Off-Ice-Object rdf:type owl:Class ;
-                rdfs:subClassOf :Arena .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Off-Ice-Zone
-:Off-Ice-Zone rdf:type owl:Class ;
-              rdfs:subClassOf :Off-Ice-Object .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#On-Ice-Object
-:On-Ice-Object rdf:type owl:Class ;
-               rdfs:subClassOf :Arena .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#On-Ice-Zone
-:On-Ice-Zone rdf:type owl:Class ;
-             rdfs:subClassOf :On-Ice-Object ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :partOf ;
-                               owl:allValuesFrom :Rink
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :partOf ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Rink
-                             ] .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Overtime-Period
-:Overtime-Period rdf:type owl:Class ;
-                 rdfs:subClassOf :Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Box-Zone
-:Penalty-Box-Zone rdf:type owl:Class ;
-                  rdfs:subClassOf :Off-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Box-Zone-N
-:Penalty-Box-Zone-N rdf:type owl:Class ;
-                    rdfs:subClassOf :Penalty-Box-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Box-Zone-S
-:Penalty-Box-Zone-S rdf:type owl:Class ;
-                    rdfs:subClassOf :Penalty-Box-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Shot-Shootout-Period
-:Penalty-Shot-Shootout-Period rdf:type owl:Class ;
-                              rdfs:subClassOf :Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period
-:Period rdf:type owl:Class ;
-        rdfs:subClassOf [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingN-team ;
-                          owl:allValuesFrom :Team
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingS-team ;
-                          owl:allValuesFrom :Team
-                        ] .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-1
-:Period-1 rdf:type owl:Class ;
-          rdfs:subClassOf :Regulation-Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-2
-:Period-2 rdf:type owl:Class ;
-          rdfs:subClassOf :Regulation-Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-3
-:Period-3 rdf:type owl:Class ;
-          rdfs:subClassOf :Regulation-Period .
-
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Assistant-general-manager
-:Assistant-general-manager rdf:type owl:Class ;
-                           rdfs:subClassOf :Person .
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Protective-Netting
-:Protective-Netting rdf:type owl:Class ;
-                    rdfs:subClassOf :On-Ice-Object .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Puck
-:Puck rdf:type owl:Class ;
-      rdfs:subClassOf :On-Ice-Object ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :has-x-coordinate ;
-                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:double
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :has-y-coordinate ;
-                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:double
-                      ] .
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Regulation-Period
-:Regulation-Period rdf:type owl:Class ;
-                   rdfs:subClassOf :Period .
-
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Rink
-:Rink rdf:type owl:Class ;
-      rdfs:subClassOf :On-Ice-Object ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :has-length ;
-                        owl:allValuesFrom xsd:double
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :has-width ;
-                        owl:allValuesFrom xsd:double
-                      ] .
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Center
-:Center rdf:type owl:Class ;
-        rdfs:subClassOf :Forward .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Chairperson
-:Chairperson rdf:type owl:Class ;
-             rdfs:subClassOf :Person .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Coach
-:Coach rdf:type owl:Class ;
-       rdfs:subClassOf :Person .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Conditioning-coach
-:Conditioning-coach rdf:type owl:Class ;
-                    rdfs:subClassOf :Coach .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Defender
-:Defender rdf:type owl:Class ;
-          rdfs:subClassOf :Player .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Equipment-manager
-:Equipment-manager rdf:type owl:Class ;
-                   rdfs:subClassOf :Person .
-
-
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Forward
 :Forward rdf:type owl:Class ;
          rdfs:subClassOf :Player .
@@ -921,6 +770,51 @@
                  rdfs:subClassOf :Person .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Frame
+:Goal-Frame rdf:type owl:Class ;
+            rdfs:subClassOf :On-Ice-Object .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Net
+:Goal-Net rdf:type owl:Class ;
+          rdfs:subClassOf :On-Ice-Object .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Zone
+:Goal-Zone rdf:type owl:Class ;
+           rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Zone-N
+:Goal-Zone-N rdf:type owl:Class ;
+             rdfs:subClassOf :Goal-Zone ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :located-in ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Zone-NE
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :located-in ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Zone-NW
+                             ] .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Zone-S
+:Goal-Zone-S rdf:type owl:Class ;
+             rdfs:subClassOf :Goal-Zone ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :located-in ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Zone-SE
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :located-in ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Zone-SW
+                             ] .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goalkeeper
 :Goalkeeper rdf:type owl:Class ;
             rdfs:subClassOf :Player .
@@ -960,6 +854,130 @@
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Left-Wing
 :Left-Wing rdf:type owl:Class ;
            rdfs:subClassOf :Forward .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Moorings
+:Moorings rdf:type owl:Class ;
+          rdfs:subClassOf :On-Ice-Object .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Off-Ice-Zone
+:Off-Ice-Zone rdf:type owl:Class ;
+              rdfs:subClassOf :Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#On-Ice-Object
+:On-Ice-Object rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#On-Ice-Zone
+:On-Ice-Zone rdf:type owl:Class ;
+             rdfs:subClassOf :Zone ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :partOf ;
+                               owl:allValuesFrom :Rink
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :partOf ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Rink
+                             ] .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Overtime-Period
+:Overtime-Period rdf:type owl:Class ;
+                 rdfs:subClassOf :Period .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Box-Zone
+:Penalty-Box-Zone rdf:type owl:Class ;
+                  rdfs:subClassOf :Off-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Box-Zone-N
+:Penalty-Box-Zone-N rdf:type owl:Class ;
+                    rdfs:subClassOf :Penalty-Box-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Box-Zone-S
+:Penalty-Box-Zone-S rdf:type owl:Class ;
+                    rdfs:subClassOf :Penalty-Box-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Shot-Shootout-Period
+:Penalty-Shot-Shootout-Period rdf:type owl:Class ;
+                              rdfs:subClassOf :Period .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period
+:Period rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :defendingNTeam-hasbench ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :Bench-Zone-N
+                                                            :Bench-Zone-S
+                                                          )
+                                            ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :defendingSTeam-hasbench ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :Bench-Zone-N
+                                                            :Bench-Zone-S
+                                                          )
+                                            ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingN-team ;
+                          owl:allValuesFrom :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingS-team ;
+                          owl:allValuesFrom :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :defendingNTeam-hasbench ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass [ rdf:type owl:Class ;
+                                        owl:unionOf ( :Bench-Zone-N
+                                                      :Bench-Zone-S
+                                                    )
+                                      ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :defendingSTeam-hasbench ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass [ rdf:type owl:Class ;
+                                        owl:unionOf ( :Bench-Zone-N
+                                                      :Bench-Zone-S
+                                                    )
+                                      ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingN-team ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingS-team ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Team
+                        ] .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-1
+:Period-1 rdf:type owl:Class ;
+          rdfs:subClassOf :Regulation-Period .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-2
+:Period-2 rdf:type owl:Class ;
+          rdfs:subClassOf :Regulation-Period .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-3
+:Period-3 rdf:type owl:Class ;
+          rdfs:subClassOf :Regulation-Period .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Person
@@ -1016,6 +1034,26 @@
            rdfs:subClassOf :Person .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Protective-Netting
+:Protective-Netting rdf:type owl:Class ;
+                    rdfs:subClassOf :On-Ice-Object .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Puck
+:Puck rdf:type owl:Class ;
+      rdfs:subClassOf :On-Ice-Object ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-x-coordinate ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onDataRange xsd:double
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-y-coordinate ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onDataRange xsd:double
+                      ] .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Referee
 :Referee rdf:type owl:Class ;
          rdfs:subClassOf :Person .
@@ -1026,9 +1064,27 @@
                      rdfs:subClassOf :Game .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Regulation-Period
+:Regulation-Period rdf:type owl:Class ;
+                   rdfs:subClassOf :Period .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Right-Wing
 :Right-Wing rdf:type owl:Class ;
             rdfs:subClassOf :Forward .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Rink
+:Rink rdf:type owl:Class ;
+      rdfs:subClassOf :On-Ice-Object ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-length ;
+                        owl:allValuesFrom xsd:double
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-width ;
+                        owl:allValuesFrom xsd:double
+                      ] .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Scout
@@ -1101,60 +1157,6 @@
                        ] ;
        rdfs:label "Shift" .
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Ten-Minutes-Sudden-Death
-:Ten-Minutes-Sudden-Death rdf:type owl:Class ;
-                          rdfs:subClassOf :Overtime-Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Twenty-Minutes-Sudden-Death
-:Twenty-Minutes-Sudden-Death rdf:type owl:Class ;
-                             rdfs:subClassOf :Overtime-Period .
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-C
-:Zone-C rdf:type owl:Class ;
-        rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-CNE
-:Zone-CNE rdf:type owl:Class ;
-          rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-CNW
-:Zone-CNW rdf:type owl:Class ;
-          rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-CSE
-:Zone-CSE rdf:type owl:Class ;
-          rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-CSW
-:Zone-CSW rdf:type owl:Class ;
-          rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-NE
-:Zone-NE rdf:type owl:Class ;
-         rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-NW
-:Zone-NW rdf:type owl:Class ;
-         rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-SE
-:Zone-SE rdf:type owl:Class ;
-         rdfs:subClassOf :On-Ice-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-SW
-:Zone-SW rdf:type owl:Class ;
-         rdfs:subClassOf :On-Ice-Zone .
-
-
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Team
 :Team rdf:type owl:Class ;
@@ -1222,9 +1224,64 @@
                                         ] .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Ten-Minutes-Sudden-Death
+:Ten-Minutes-Sudden-Death rdf:type owl:Class ;
+                          rdfs:subClassOf :Overtime-Period .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Twenty-Minutes-Sudden-Death
+:Twenty-Minutes-Sudden-Death rdf:type owl:Class ;
+                             rdfs:subClassOf :Overtime-Period .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Video-coach
 :Video-coach rdf:type owl:Class ;
              rdfs:subClassOf :Coach .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-C
+:Zone-C rdf:type owl:Class ;
+        rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-CNE
+:Zone-CNE rdf:type owl:Class ;
+          rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-CNW
+:Zone-CNW rdf:type owl:Class ;
+          rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-CSE
+:Zone-CSE rdf:type owl:Class ;
+          rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-CSW
+:Zone-CSW rdf:type owl:Class ;
+          rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-NE
+:Zone-NE rdf:type owl:Class ;
+         rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-NW
+:Zone-NW rdf:type owl:Class ;
+         rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-SE
+:Zone-SE rdf:type owl:Class ;
+         rdfs:subClassOf :On-Ice-Zone .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-SW
+:Zone-SW rdf:type owl:Class ;
+         rdfs:subClassOf :On-Ice-Zone .
 
 
 ###  https://www.ida.liu.se/research/sportsanalytics/2019/2/ice-hockey.owl#Overtime
@@ -1232,4 +1289,4 @@
                                                                                  rdfs:subClassOf <http://webprotege.stanford.edu/Period> .
 
 
-###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
