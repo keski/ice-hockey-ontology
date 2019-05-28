@@ -50,12 +50,28 @@
                                                rdfs:label "shot-taken-by" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defendingNTeam-hasbench
-:defendingNTeam-hasbench rdf:type owl:ObjectProperty .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-penalized-player
+:has-penalized-player rdf:type owl:ObjectProperty ;
+                      rdfs:domain <http://webprotege.stanford.edu/Penalty-event> ;
+                      rdfs:range :Player .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defendingSTeam-hasbench
-:defendingSTeam-hasbench rdf:type owl:ObjectProperty .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-penalized-team
+:has-penalized-team rdf:type owl:ObjectProperty ;
+                    rdfs:domain <http://webprotege.stanford.edu/Penalty-event> ;
+                    rdfs:range :Team .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-penalty-severity
+:has-penalty-severity rdf:type owl:ObjectProperty ;
+                      rdfs:domain <http://webprotege.stanford.edu/Penalty-event> ;
+                      rdfs:range :Penalty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-penalty-type
+:has-penalty-type rdf:type owl:ObjectProperty ;
+                  rdfs:domain <http://webprotege.stanford.edu/Penalty-event> ;
+                  rdfs:range :Penalty-type .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#attackingTeam
@@ -73,6 +89,14 @@
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#contains-team
 :contains-team rdf:type owl:ObjectProperty ;
                owl:inverseOf :plays-in-league .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#defendingNTeam-hasbench
+:defendingNTeam-hasbench rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#defendingSTeam-hasbench
+:defendingSTeam-hasbench rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#defendingTeam
@@ -205,6 +229,12 @@
                                                 rdfs:label "has-event-time" .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#penalizedDuration
+:penalizedDuration rdf:type owl:DatatypeProperty ;
+                   rdfs:domain <http://webprotege.stanford.edu/Penalty-event> ;
+                   rdfs:range xsd:integer .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-end-year
 :has-end-year rdf:type owl:DatatypeProperty .
 
@@ -332,22 +362,10 @@
                                          rdfs:label "Faceoff" .
 
 
-###  http://webprotege.stanford.edu/Fighting
-<http://webprotege.stanford.edu/Fighting> rdf:type owl:Class ;
-                                          rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
-                                          rdfs:label "Fighting" .
-
-
 ###  http://webprotege.stanford.edu/Game-end
 <http://webprotege.stanford.edu/Game-end> rdf:type owl:Class ;
                                           rdfs:subClassOf <http://webprotege.stanford.edu/End-event> ;
                                           rdfs:label "Game-end" .
-
-
-###  http://webprotege.stanford.edu/Game-misconduct
-<http://webprotege.stanford.edu/Game-misconduct> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
-                                                 rdfs:label "Game-misconduct" .
 
 
 ###  http://webprotege.stanford.edu/Game-off
@@ -362,22 +380,10 @@
                                           rdfs:label "Giveaway" .
 
 
-###  http://webprotege.stanford.edu/Hi-sticking
-<http://webprotege.stanford.edu/Hi-sticking> rdf:type owl:Class ;
-                                             rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
-                                             rdfs:label "Hi-sticking" .
-
-
 ###  http://webprotege.stanford.edu/Hit
 <http://webprotege.stanford.edu/Hit> rdf:type owl:Class ;
                                      rdfs:subClassOf <http://webprotege.stanford.edu/Action-event> ;
                                      rdfs:label "Hit" .
-
-
-###  http://webprotege.stanford.edu/Misconduct
-<http://webprotege.stanford.edu/Misconduct> rdf:type owl:Class ;
-                                            rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
-                                            rdfs:label "Misconduct" .
 
 
 ###  http://webprotege.stanford.edu/Missed-shot-event
@@ -388,16 +394,46 @@
 
 ###  http://webprotege.stanford.edu/Penalty-event
 <http://webprotege.stanford.edu/Penalty-event> rdf:type owl:Class ;
-                                               rdfs:subClassOf :Game-event ;
+                                               rdfs:subClassOf :Game-event ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :has-penalized-player ;
+                                                                 owl:allValuesFrom :Player
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :has-penalized-team ;
+                                                                 owl:allValuesFrom :Team
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :has-penalty-severity ;
+                                                                 owl:allValuesFrom :Penalty
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :has-penalty-type ;
+                                                                 owl:allValuesFrom :Penalty-type
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :has-penalized-player ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :Player
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :has-penalized-team ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :Team
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :penalizedDuration ;
+                                                                 owl:allValuesFrom xsd:int
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :penalizedDuration ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onDataRange xsd:int
+                                                               ] ;
                                                :directlyFollowedBy <http://webprotege.stanford.edu/Action-event> ,
                                                                    <http://webprotege.stanford.edu/End-event> ;
                                                :directlyPrecededBy <http://webprotege.stanford.edu/Action-event> ;
                                                rdfs:label "Penalty-event" .
-
-
-###  http://webprotege.stanford.edu/Penalty-type
-<http://webprotege.stanford.edu/Penalty-type> rdf:type owl:Class ;
-                                              rdfs:label "Penalty-type" .
 
 
 ###  http://webprotege.stanford.edu/Period
@@ -476,14 +512,182 @@
                                           rdfs:label "Takeaway" .
 
 
-###  http://webprotege.stanford.edu/Tripping
-<http://webprotege.stanford.edu/Tripping> rdf:type owl:Class ;
-                                          rdfs:subClassOf <http://webprotege.stanford.edu/Penalty-type> ;
-                                          rdfs:label "Tripping" .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Bench-Minor-Penalty
+:Bench-Minor-Penalty rdf:type owl:Class ;
+                     rdfs:subClassOf :Penalty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Zone
-:Zone rdf:type owl:Class .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Fighting
+:Fighting rdf:type owl:Class ;
+          rdfs:subClassOf :Penalty-type ;
+          rdfs:label "Fighting" .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Five-Minutes-Sudden-Death
+:Five-Minutes-Sudden-Death rdf:type owl:Class ;
+                           rdfs:subClassOf :Overtime-Period .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Game-Misconduct-Penalty
+:Game-Misconduct-Penalty rdf:type owl:Class ;
+                         rdfs:subClassOf :Penalty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Hi-sticking
+:Hi-sticking rdf:type owl:Class ;
+             rdfs:subClassOf :Penalty-type ;
+             rdfs:label "Hi-sticking" .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Holding
+:Holding rdf:type owl:Class ;
+         rdfs:subClassOf :Penalty-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Interference
+:Interference rdf:type owl:Class ;
+              rdfs:subClassOf :Penalty-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Major-Penalty
+:Major-Penalty rdf:type owl:Class ;
+               rdfs:subClassOf :Penalty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Match-Penalty
+:Match-Penalty rdf:type owl:Class ;
+               rdfs:subClassOf :Penalty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Minor-Penalty
+:Minor-Penalty rdf:type owl:Class ;
+               rdfs:subClassOf :Penalty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Misconduct-Penalty
+:Misconduct-Penalty rdf:type owl:Class ;
+                    rdfs:subClassOf :Penalty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Overtime-Period
+:Overtime-Period rdf:type owl:Class ;
+                 rdfs:subClassOf :Period .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Penalty
+:Penalty rdf:type owl:Class .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Penalty-Shot-Shootout-Period
+:Penalty-Shot-Shootout-Period rdf:type owl:Class ;
+                              rdfs:subClassOf :Period .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Penalty-type
+:Penalty-type rdf:type owl:Class ;
+              rdfs:label "Penalty-type" .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Period
+:Period rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :defendingNTeam-hasbench ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :Bench-Zone-N
+                                                            :Bench-Zone-S
+                                                          )
+                                            ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :defendingSTeam-hasbench ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :Bench-Zone-N
+                                                            :Bench-Zone-S
+                                                          )
+                                            ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingN-team ;
+                          owl:allValuesFrom :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingS-team ;
+                          owl:allValuesFrom :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :defendingNTeam-hasbench ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass [ rdf:type owl:Class ;
+                                        owl:unionOf ( :Bench-Zone-N
+                                                      :Bench-Zone-S
+                                                    )
+                                      ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :defendingSTeam-hasbench ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass [ rdf:type owl:Class ;
+                                        owl:unionOf ( :Bench-Zone-N
+                                                      :Bench-Zone-S
+                                                    )
+                                      ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingN-team ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingS-team ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Team
+                        ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Period-1
+:Period-1 rdf:type owl:Class ;
+          rdfs:subClassOf :Regulation-Period .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Period-2
+:Period-2 rdf:type owl:Class ;
+          rdfs:subClassOf :Regulation-Period .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Period-3
+:Period-3 rdf:type owl:Class ;
+          rdfs:subClassOf :Regulation-Period .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Regulation-Period
+:Regulation-Period rdf:type owl:Class ;
+                   rdfs:subClassOf :Period .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Slashing
+:Slashing rdf:type owl:Class ;
+          rdfs:subClassOf :Penalty-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Ten-Minutes-Sudden-Death
+:Ten-Minutes-Sudden-Death rdf:type owl:Class ;
+                          rdfs:subClassOf :Overtime-Period .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Too-Many-Players-On-Ice
+:Too-Many-Players-On-Ice rdf:type owl:Class ;
+                         rdfs:subClassOf :Penalty-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Tripping
+:Tripping rdf:type owl:Class ;
+          rdfs:subClassOf :Penalty-type ;
+          rdfs:label "Tripping" .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Twenty-Minutes-Sudden-Death
+:Twenty-Minutes-Sudden-Death rdf:type owl:Class ;
+                             rdfs:subClassOf :Overtime-Period .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Assistant-coach
@@ -683,11 +887,6 @@
                                  ] .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Five-Minutes-Sudden-Death
-:Five-Minutes-Sudden-Death rdf:type owl:Class ;
-                           rdfs:subClassOf :Overtime-Period .
-
-
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Forward
 :Forward rdf:type owl:Class ;
          rdfs:subClassOf :Player .
@@ -787,32 +986,12 @@
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Zone-N
 :Goal-Zone-N rdf:type owl:Class ;
-             rdfs:subClassOf :Goal-Zone ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :located-in ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Zone-NE
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :located-in ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Zone-NW
-                             ] .
+             rdfs:subClassOf :Goal-Zone .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goal-Zone-S
 :Goal-Zone-S rdf:type owl:Class ;
-             rdfs:subClassOf :Goal-Zone ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :located-in ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Zone-SE
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :located-in ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Zone-SW
-                             ] .
+             rdfs:subClassOf :Goal-Zone .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Goalkeeper
@@ -884,11 +1063,6 @@
                              ] .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Overtime-Period
-:Overtime-Period rdf:type owl:Class ;
-                 rdfs:subClassOf :Period .
-
-
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Box-Zone
 :Penalty-Box-Zone rdf:type owl:Class ;
                   rdfs:subClassOf :Off-Ice-Zone .
@@ -902,82 +1076,6 @@
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Box-Zone-S
 :Penalty-Box-Zone-S rdf:type owl:Class ;
                     rdfs:subClassOf :Penalty-Box-Zone .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Penalty-Shot-Shootout-Period
-:Penalty-Shot-Shootout-Period rdf:type owl:Class ;
-                              rdfs:subClassOf :Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period
-:Period rdf:type owl:Class ;
-        rdfs:subClassOf [ rdf:type owl:Restriction ;
-                          owl:onProperty :defendingNTeam-hasbench ;
-                          owl:allValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( :Bench-Zone-N
-                                                            :Bench-Zone-S
-                                                          )
-                                            ]
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :defendingSTeam-hasbench ;
-                          owl:allValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( :Bench-Zone-N
-                                                            :Bench-Zone-S
-                                                          )
-                                            ]
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingN-team ;
-                          owl:allValuesFrom :Team
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingS-team ;
-                          owl:allValuesFrom :Team
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :defendingNTeam-hasbench ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass [ rdf:type owl:Class ;
-                                        owl:unionOf ( :Bench-Zone-N
-                                                      :Bench-Zone-S
-                                                    )
-                                      ]
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :defendingSTeam-hasbench ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass [ rdf:type owl:Class ;
-                                        owl:unionOf ( :Bench-Zone-N
-                                                      :Bench-Zone-S
-                                                    )
-                                      ]
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingN-team ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Team
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingS-team ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Team
-                        ] .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-1
-:Period-1 rdf:type owl:Class ;
-          rdfs:subClassOf :Regulation-Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-2
-:Period-2 rdf:type owl:Class ;
-          rdfs:subClassOf :Regulation-Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Period-3
-:Period-3 rdf:type owl:Class ;
-          rdfs:subClassOf :Regulation-Period .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Person
@@ -1062,11 +1160,6 @@
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Regular-season-game
 :Regular-season-game rdf:type owl:Class ;
                      rdfs:subClassOf :Game .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Regulation-Period
-:Regulation-Period rdf:type owl:Class ;
-                   rdfs:subClassOf :Period .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Right-Wing
@@ -1224,19 +1317,13 @@
                                         ] .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Ten-Minutes-Sudden-Death
-:Ten-Minutes-Sudden-Death rdf:type owl:Class ;
-                          rdfs:subClassOf :Overtime-Period .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Twenty-Minutes-Sudden-Death
-:Twenty-Minutes-Sudden-Death rdf:type owl:Class ;
-                             rdfs:subClassOf :Overtime-Period .
-
-
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Video-coach
 :Video-coach rdf:type owl:Class ;
              rdfs:subClassOf :Coach .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone
+:Zone rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Zone-C
