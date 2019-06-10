@@ -375,6 +375,15 @@ xsd:date rdf:type rdfs:Datatype .
 #    Classes
 #################################################################
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Faceoff-Zone-Center
+:Faceoff-Zone-Center rdf:type owl:Class ;
+                     rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone> ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                       owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
+                                     ] .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event> rdf:type owl:Class ;
                                                                     rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> ;
@@ -447,12 +456,7 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot> ,
                                                                                                [ rdf:type owl:Restriction ;
                                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                                 owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
-                                                                                               ] ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                                 owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
+                                                                                                 owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                                ] .
 
 
@@ -495,7 +499,11 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-Zone-Faceoff-Spot
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-Zone-Faceoff-Spot> rdf:type owl:Class ;
-                                                                             rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot> .
+                                                                             rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot> ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                               owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-Zone>
+                                                                                             ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-event
@@ -554,12 +562,7 @@ xsd:date rdf:type rdfs:Datatype .
                                                                         rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone-Faceoff-Spot> ,
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                          owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNE>
-                                                                                        ] ,
-                                                                                        [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                          owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNE>
+                                                                                          owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNE>
                                                                                         ] .
 
 
@@ -568,12 +571,7 @@ xsd:date rdf:type rdfs:Datatype .
                                                                         rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone-Faceoff-Spot> ,
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                          owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNW>
-                                                                                        ] ,
-                                                                                        [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                          owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNW>
+                                                                                          owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNW>
                                                                                         ] .
 
 
@@ -582,12 +580,7 @@ xsd:date rdf:type rdfs:Datatype .
                                                                         rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone-Faceoff-Spot> ,
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                          owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSE>
-                                                                                        ] ,
-                                                                                        [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                          owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSE>
+                                                                                          owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSE>
                                                                                         ] .
 
 
@@ -596,68 +589,71 @@ xsd:date rdf:type rdfs:Datatype .
                                                                         rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone-Faceoff-Spot> ,
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                          owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSW>
-                                                                                        ] ,
-                                                                                        [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                          owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSW>
+                                                                                          owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSW>
                                                                                         ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot-NE
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot-NE> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-Zone-Faceoff-Spot> ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-NE>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-NE>
+                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NE>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
                                                                                        ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot-NW
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot-NW> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-Zone-Faceoff-Spot> ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-NW>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-NW>
+                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NW>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
                                                                                        ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot-SE
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot-SE> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-Zone-Faceoff-Spot> ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-SE>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-SE>
+                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SE>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
                                                                                        ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot-SW
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot-SW> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-Zone-Faceoff-Spot> ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-SW>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-SW>
+                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
                                                                                        ] .
 
 
@@ -670,56 +666,64 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-NE
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-NE> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone> ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NE>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NE>
+                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NE>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
                                                                                        ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-NW
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-NW> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone> ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NW>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NW>
+                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NW>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
                                                                                        ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-SE
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-SE> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone> ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SE>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SE>
+                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SE>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
                                                                                        ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-SW
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone-SW> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone> ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
+                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                                owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
                                                                                        ] .
 
 
@@ -958,7 +962,11 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone-Faceoff-Spot
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone-Faceoff-Spot> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot> .
+                                                                                 rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Spot> ,
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                                   owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
+                                                                                                 ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone
@@ -1000,6 +1008,10 @@ xsd:date rdf:type rdfs:Datatype .
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-Goal-Zone> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Goal-Zone> ,
                                                                                        [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                         owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
+                                                                                       ] ,
+                                                                                       [ rdf:type owl:Restriction ;
                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                          owl:allValuesFrom [ rdf:type owl:Class ;
                                                                                                              owl:unionOf ( <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-Icing-Zone>
@@ -1007,10 +1019,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                            <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NW>
                                                                                                                          )
                                                                                                            ]
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
                                                                                        ] ,
                                                                                        [ rdf:type owl:Restriction ;
                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -1026,11 +1034,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                          owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NW>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
                                                                                        ] .
 
 
@@ -1524,6 +1527,10 @@ xsd:date rdf:type rdfs:Datatype .
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-Goal-Zone> rdf:type owl:Class ;
                                                                        rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Goal-Zone> ,
                                                                                        [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                         owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
+                                                                                       ] ,
+                                                                                       [ rdf:type owl:Restriction ;
                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                          owl:allValuesFrom [ rdf:type owl:Class ;
                                                                                                              owl:unionOf ( <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-Icing-Zone>
@@ -1531,10 +1538,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                            <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
                                                                                                                          )
                                                                                                            ]
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
                                                                                        ] ,
                                                                                        [ rdf:type owl:Restriction ;
                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -1550,11 +1553,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                          owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                          owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
-                                                                                       ] ,
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                         owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
                                                                                        ] .
 
 
@@ -1703,6 +1701,10 @@ xsd:date rdf:type rdfs:Datatype .
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNE> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Blocked-Zone> ,
                                                                                 [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                  owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
+                                                                                ] ,
+                                                                                [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
                                                                                                       owl:unionOf ( <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
@@ -1711,10 +1713,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                     <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NE>
                                                                                                                   )
                                                                                                     ]
-                                                                                ] ,
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                  owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                 ] ,
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -1735,17 +1733,16 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                   owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NE>
-                                                                                ] ,
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                  owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                 ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNW
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CNW> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Blocked-Zone> ,
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                  owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
+                                                                                ] ,
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
@@ -1755,10 +1752,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                     <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
                                                                                                                   )
                                                                                                     ]
-                                                                                ] ,
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                  owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                 ] ,
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -1779,17 +1772,16 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                   owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
-                                                                                ] ,
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                  owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                 ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSE
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSE> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Blocked-Zone> ,
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                  owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
+                                                                                ] ,
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
@@ -1799,10 +1791,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                     <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
                                                                                                                   )
                                                                                                     ]
-                                                                                ] ,
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                  owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                 ] ,
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -1823,17 +1811,16 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                   owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
-                                                                                ] ,
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                  owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                 ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSW
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-CSW> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Blocked-Zone> ,
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                  owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
+                                                                                ] ,
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
@@ -1843,10 +1830,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                     <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
                                                                                                                   )
                                                                                                     ]
-                                                                                ] ,
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                  owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                 ] ,
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -1867,17 +1850,16 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                   owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                   owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
-                                                                                ] ,
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                  owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
                                                                                 ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NE
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NE> rdf:type owl:Class ;
                                                                rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Blocked-Zone> ,
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                 owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
+                                                                               ] ,
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                  owl:allValuesFrom [ rdf:type owl:Class ;
@@ -1887,10 +1869,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                    <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NW>
                                                                                                                  )
                                                                                                    ]
-                                                                               ] ,
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                 owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
                                                                                ] ,
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -1911,11 +1889,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                  owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-NW>
-                                                                               ] ,
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                 owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/North-End-Zone>
                                                                                ] .
 
 
@@ -1967,6 +1940,10 @@ xsd:date rdf:type rdfs:Datatype .
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SE> rdf:type owl:Class ;
                                                                rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Blocked-Zone> ,
                                                                                [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                 owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
+                                                                               ] ,
+                                                                               [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                  owl:allValuesFrom [ rdf:type owl:Class ;
                                                                                                      owl:unionOf ( <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
@@ -1975,10 +1952,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                    <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
                                                                                                                  )
                                                                                                    ]
-                                                                               ] ,
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                 owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
                                                                                ] ,
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -1999,17 +1972,16 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                  owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW>
-                                                                               ] ,
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                 owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
                                                                                ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SW> rdf:type owl:Class ;
                                                                rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Blocked-Zone> ,
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                                                                 owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
+                                                                               ] ,
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                  owl:allValuesFrom [ rdf:type owl:Class ;
@@ -2019,10 +1991,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                                                    <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SE>
                                                                                                                  )
                                                                                                    ]
-                                                                               ] ,
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                 owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
                                                                                ] ,
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
@@ -2043,11 +2011,6 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to> ;
                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                  owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SE>
-                                                                               ] ,
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                 owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/South-End-Zone>
                                                                                ] .
 
 
