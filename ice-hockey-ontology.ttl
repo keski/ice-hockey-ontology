@@ -38,6 +38,10 @@
 xsd:date rdf:type rdfs:Datatype .
 
 
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
 #################################################################
 #    Object Properties
 #################################################################
@@ -269,6 +273,11 @@ xsd:date rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-period-time
+:has-period-time rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:duration .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/has-end-year
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/has-end-year> rdf:type owl:DatatypeProperty .
 
@@ -342,40 +351,31 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-date
 :has-date rdf:type owl:DatatypeProperty ;
-         rdfs:subPropertyOf owl:topDataProperty ;
-         rdfs:range xsd:date .
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:range xsd:date .
 
 
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-end-time
 :has-end-time rdf:type owl:DatatypeProperty ;
-            rdfs:subPropertyOf owl:topDataProperty ;
-            rdfs:range xsd:dateTime .
-
-
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-start-time
-:has-start-time rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdfs:range xsd:dateTime .
 
 
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-start-time
+:has-start-time rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:range xsd:dateTime .
+
+
 ###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-time
 :has-time rdf:type owl:DatatypeProperty ;
-         rdfs:subPropertyOf owl:topDataProperty ;
-         rdfs:range xsd:dateTime .
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:range xsd:dateTime .
 
 
 #################################################################
 #    Classes
 #################################################################
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Faceoff-Zone-Center
-:Faceoff-Zone-Center rdf:type owl:Class ;
-                     rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone> ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
-                                       owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
-                                     ] .
-
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event> rdf:type owl:Class ;
@@ -800,14 +800,33 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> rdf:type owl:Class ;
                                                                   rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Event> ,
+                                                                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :has-period-time ;
+                                                                                                           owl:allValuesFrom xsd:duration
+                                                                                                         ]
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :has-period-time ;
+                                                                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                           owl:onDataRange xsd:duration
+                                                                                                         ]
+                                                                                                       ) ;
+                                                                                    rdf:type owl:Class
+                                                                                  ] ,
+                                                                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :has-time ;
+                                                                                                           owl:allValuesFrom xsd:dateTime
+                                                                                                         ]
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :has-time ;
+                                                                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                           owl:onDataRange xsd:dateTime
+                                                                                                         ]
+                                                                                                       ) ;
+                                                                                    rdf:type owl:Class
+                                                                                  ] ,
                                                                                   [ rdf:type owl:Restriction ;
                                                                                     owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/occured-in-period> ;
                                                                                     owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Period>
-                                                                                  ] ,
-                                                                                  [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty :has-time ;
-                                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                    owl:onDataRange xsd:dateTime
                                                                                   ] .
 
 
@@ -2005,6 +2024,15 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                  owl:onClass <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Zone-SE>
                                                                                ] .
+
+
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#Faceoff-Zone-Center
+:Faceoff-Zone-Center rdf:type owl:Class ;
+                     rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff-Zone> ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/located-in> ;
+                                       owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Neutral-Zone>
+                                     ] .
 
 
 #################################################################
