@@ -273,13 +273,6 @@ xsd:date rdf:type rdfs:Datatype .
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/has-end-year> rdf:type owl:DatatypeProperty .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/has-event-time
-<http://www.ida.liu.se/ontologies/ice-hockey-ontology/has-event-time> rdf:type owl:DatatypeProperty ;
-                                                                      rdfs:subPropertyOf owl:topDataProperty ;
-                                                                      rdfs:domain <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Event> ;
-                                                                      rdfs:label "has-event-time" .
-
-
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/has-league-name
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/has-league-name> rdf:type owl:DatatypeProperty ;
                                                                        rdfs:subPropertyOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/has-name> .
@@ -347,26 +340,26 @@ xsd:date rdf:type rdfs:Datatype .
                                                                          rdfs:range xsd:integer .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#hasDate
-:hasDate rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-date
+:has-date rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf owl:topDataProperty ;
          rdfs:range xsd:date .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#hasEndTime
-:hasEndTime rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-end-time
+:has-end-time rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf owl:topDataProperty ;
             rdfs:range xsd:dateTime .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#hasStartTime
-:hasStartTime rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-start-time
+:has-start-time rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdfs:range xsd:dateTime .
 
 
-###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#hasTime
-:hasTime rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/patla00/ontologies/2018/4/ice-hockey#has-time
+:has-time rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf owl:topDataProperty ;
          rdfs:range xsd:dateTime .
 
@@ -735,12 +728,12 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game> rdf:type owl:Class ;
                                                             rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                                     owl:onProperty :hasEndTime ;
+                                                                                                     owl:onProperty :has-end-time ;
                                                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                                      owl:onDataRange xsd:dateTime
                                                                                                    ]
                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                     owl:onProperty :hasStartTime ;
+                                                                                                     owl:onProperty :has-start-time ;
                                                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                                      owl:onDataRange xsd:dateTime
                                                                                                    ]
@@ -812,7 +805,7 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                     owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Period>
                                                                                   ] ,
                                                                                   [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty :hasTime ;
+                                                                                    owl:onProperty :has-time ;
                                                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                     owl:onDataRange xsd:dateTime
                                                                                   ] .
@@ -1185,12 +1178,12 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Period
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Period> rdf:type owl:Class ;
                                                               rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                                       owl:onProperty :hasEndTime ;
+                                                                                                       owl:onProperty :has-end-time ;
                                                                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                                        owl:onDataRange xsd:dateTime
                                                                                                      ]
                                                                                                      [ rdf:type owl:Restriction ;
-                                                                                                       owl:onProperty :hasStartTime ;
+                                                                                                       owl:onProperty :has-start-time ;
                                                                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                                                        owl:onDataRange xsd:dateTime
                                                                                                      ]
