@@ -46,6 +46,24 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directly-followed-by
+:directly-followed-by rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :followed-by ;
+                      owl:inverseOf :directly-preceded-by .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directly-preceded-by
+:directly-preceded-by rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :preceded-by .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#followed-by
+:followed-by rdf:type owl:ObjectProperty ;
+             owl:inverseOf :preceded-by ;
+             rdfs:domain <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> ;
+             rdfs:range <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-player-on-ice
 :has-away-player-on-ice rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf :has-player-on-ice .
@@ -72,6 +90,12 @@ xsd:duration rdf:type rdfs:Datatype .
 :has-team-disposition rdf:type owl:ObjectProperty ;
                       rdfs:domain :Game-state ;
                       rdfs:range :Team-disposition .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#preceded-by
+:preceded-by rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> ;
+             rdfs:range <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/adjacent-to
@@ -474,20 +498,35 @@ xsd:duration rdf:type rdfs:Datatype .
               rdfs:subClassOf :Team-disposition .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Stoppage
+:Stoppage rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team-disposition
 :Team-disposition rdf:type owl:Class .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> ;
-                                                                    <http://www.ida.liu.se/ontologies/ice-hockey-ontology/directlyFollowedBy> <http://webprotege.stanford.edu/End-event> ,
-                                                                                                                                              <http://webprotege.stanford.edu/Penalty-event> ,
-                                                                                                                                              <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event> ;
-                                                                    <http://www.ida.liu.se/ontologies/ice-hockey-ontology/directlyPrecededBy> <http://webprotege.stanford.edu/Penalty-event> ,
-                                                                                                                                              <http://webprotege.stanford.edu/Start-event> ,
-                                                                                                                                              <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event> ;
-                                                                    rdfs:label "Action-event" .
+                                                                    rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> ,
+                                                                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty :directly-followed-by ;
+                                                                                                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                                 owl:unionOf ( :Stoppage
+                                                                                                                                               <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event>
+                                                                                                                                               <http://www.ida.liu.se/ontologies/ice-hockey-ontology/End-event>
+                                                                                                                                               <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Penalty-event>
+                                                                                                                                             )
+                                                                                                                               ]
+                                                                                                           ]
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty :directly-followed-by ;
+                                                                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                                                                           ]
+                                                                                                         ) ;
+                                                                                      rdf:type owl:Class
+                                                                                    ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Arena
@@ -620,7 +659,11 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event> ,
+                                                               rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> ,
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :directly-followed-by ;
+                                                                                 owl:someValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Action-event>
+                                                                               ] ,
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty <http://www.ida.liu.se/ontologies/ice-hockey-ontology/away-player> ;
                                                                                  owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Player-on-roster>
@@ -1717,7 +1760,18 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology/Start-event
 <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Start-event> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> ;
+                                                                   rdfs:subClassOf <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Game-event> ,
+                                                                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty :directly-followed-by ;
+                                                                                                            owl:allValuesFrom <http://www.ida.liu.se/ontologies/ice-hockey-ontology/Faceoff>
+                                                                                                          ]
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty :directly-followed-by ;
+                                                                                                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ] ;
                                                                    <http://www.ida.liu.se/ontologies/ice-hockey-ontology/directlyFollowedBy> <http://webprotege.stanford.edu/Action-event> ;
                                                                    rdfs:label "Start-event" .
 
