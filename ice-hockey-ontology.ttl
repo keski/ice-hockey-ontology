@@ -25,8 +25,7 @@ xsd:duration rdf:type rdfs:Datatype .
 #################################################################
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#adjacent-to
-:adjacent-to rdf:type owl:ObjectProperty ,
-                      owl:SymmetricProperty ;
+:adjacent-to rdf:type owl:ObjectProperty ;
              rdfs:domain [ rdf:type owl:Class ;
                            owl:unionOf ( :Blocked-zone
                                          :End-zone
@@ -286,12 +285,6 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#part-of
 :part-of rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#partly-adjacent-to
-:partly-adjacent-to rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf :adjacent-to ;
-                    rdf:type owl:SymmetricProperty .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#plays-in-league
