@@ -24,42 +24,14 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#adjacent-to
-:adjacent-to rdf:type owl:ObjectProperty ;
-             rdfs:domain [ rdf:type owl:Class ;
-                           owl:unionOf ( :Blocked-zone
-                                         :End-zone
-                                         :Faceoff-zone
-                                         :Goal-zone
-                                         :Icing-zone
-                                         :Neutral-zone
-                                       )
-                         ] ;
-             rdfs:range [ rdf:type owl:Class ;
-                          owl:unionOf ( :Blocked-zone
-                                        :End-zone
-                                        :Faceoff-zone
-                                        :Goal-zone
-                                        :Icing-zone
-                                        :Neutral-zone
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#belongs-to
+:belongs-to rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :On-ice-object
+                                        :Rink
                                       )
-                        ] .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#attacking-team
-:attacking-team rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#away-player
-:away-player rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#belong-to
-:belong-to rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#by-team
-:by-team rdf:type owl:ObjectProperty .
+                        ] ;
+            rdfs:range :Arena .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#contains-team
@@ -67,18 +39,6 @@ xsd:duration rdf:type rdfs:Datatype .
                owl:inverseOf :plays-in-league ;
                rdfs:domain :Season-for-league ;
                rdfs:range :Team .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defending-team
-:defending-team rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defendingNTeam-has-bench
-:defendingNTeam-has-bench rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#defendingSTeam-has-bench
-:defendingSTeam-has-bench rdf:type owl:ObjectProperty .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directly-followed-by
@@ -105,6 +65,17 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:range :Game-event .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-attacking-team
+:has-attacking-team rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Shot-event ;
+                    rdfs:range :Team .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-player
+:has-away-player rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :has-faceoff-players .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-player-on-ice
 :has-away-player-on-ice rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf :has-player-on-ice .
@@ -120,17 +91,42 @@ xsd:duration rdf:type rdfs:Datatype .
                       rdfs:subPropertyOf :has-team-roster .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defending-team
+:has-defending-team rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Shot-event ;
+                    rdfs:range :Team .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingN-team
-:has-defendingN-team rdf:type owl:ObjectProperty .
+:has-defendingN-team rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :has-period-defending-team .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingNTeam-bench
+:has-defendingNTeam-bench rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :has-defendingTeam-bench .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingS-team
-:has-defendingS-team rdf:type owl:ObjectProperty .
+:has-defendingS-team rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :has-period-defending-team .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-faceoff-zone
-:has-faceoff-zone rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf :has-zone .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingSTeam-bench
+:has-defendingSTeam-bench rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :has-defendingTeam-bench .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingTeam-bench
+:has-defendingTeam-bench rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Period ;
+                         rdfs:range :Bench-zone .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-faceoff-players
+:has-faceoff-players rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Faceoff ;
+                     rdfs:range :Player .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-game-event
@@ -150,6 +146,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :has-home-arena rdf:type owl:ObjectProperty ;
                 rdfs:domain :Team ;
                 rdfs:range :Arena .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-player
+:has-home-player rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :has-faceoff-players .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-player-on-ice
@@ -197,6 +198,12 @@ xsd:duration rdf:type rdfs:Datatype .
                   rdfs:range :Penalty-type .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-period-defending-team
+:has-period-defending-team rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Period ;
+                           rdfs:range :Team .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-player
 :has-player rdf:type owl:ObjectProperty ;
             rdfs:domain [ rdf:type owl:Class ;
@@ -215,7 +222,9 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-player-on-ice
 :has-player-on-ice rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf owl:topObjectProperty .
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain :Game-state ;
+                   rdfs:range :Player .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-player-on-roster
@@ -238,6 +247,24 @@ xsd:duration rdf:type rdfs:Datatype .
                  rdfs:range :Game .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-shooting-player
+:has-shooting-player rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Shot-event ;
+                     rdfs:range :Player .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-substituted-player
+:has-substituted-player rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Shift ;
+                        rdfs:range :Player-on-roster .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-substituting-player
+:has-substituting-player rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Shift ;
+                         rdfs:range :Player-on-roster .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-disposition
 :has-team-disposition rdf:type owl:ObjectProperty ;
                       rdfs:domain :Game-state ;
@@ -250,12 +277,38 @@ xsd:duration rdf:type rdfs:Datatype .
                  rdfs:range :Team-roster-for-game .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-zone
-:has-zone rdf:type owl:ObjectProperty .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-winning-team
+:has-winning-team rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Game ;
+                  rdfs:range :Team .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#home-player
-:home-player rdf:type owl:ObjectProperty .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-adjacent-to
+:is-adjacent-to rdf:type owl:ObjectProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :Blocked-zone
+                                            :End-zone
+                                            :Faceoff-zone
+                                            :Goal-zone
+                                            :Icing-zone
+                                            :Neutral-zone
+                                          )
+                            ] ;
+                rdfs:range [ rdf:type owl:Class ;
+                             owl:unionOf ( :Blocked-zone
+                                           :End-zone
+                                           :Faceoff-zone
+                                           :Goal-zone
+                                           :Icing-zone
+                                           :Neutral-zone
+                                         )
+                           ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-by-team
+:is-by-team rdf:type owl:ObjectProperty ;
+            rdfs:domain :Shift ;
+            rdfs:range :Team .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-game-for-season
@@ -264,15 +317,21 @@ xsd:duration rdf:type rdfs:Datatype .
                     rdfs:range :Season-for-league .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-located-in
+:is-located-in rdf:type owl:ObjectProperty ,
+                        owl:TransitiveProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-part-of
+:is-part-of rdf:type owl:ObjectProperty ;
+            rdfs:domain :On-ice-zone ;
+            rdfs:range :Rink .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-season-for
 :is-season-for rdf:type owl:ObjectProperty ;
                rdfs:domain :Season-for-league ;
                rdfs:range :League .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#located-in
-:located-in rdf:type owl:ObjectProperty ,
-                     owl:TransitiveProperty .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#occured-in-period
@@ -283,12 +342,10 @@ xsd:duration rdf:type rdfs:Datatype .
                    rdfs:label "occursInPeriod" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#part-of
-:part-of rdf:type owl:ObjectProperty .
-
-
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#plays-in-league
-:plays-in-league rdf:type owl:ObjectProperty .
+:plays-in-league rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Team ;
+                 rdfs:range :Season-for-league .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#plays-in-season-for-league
@@ -301,31 +358,6 @@ xsd:duration rdf:type rdfs:Datatype .
 :preceded-by rdf:type owl:ObjectProperty ;
              rdfs:domain :Game-event ;
              rdfs:range :Game-event .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#shooting-player
-:shooting-player rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#shot-taken-by
-:shot-taken-by rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf owl:topObjectProperty ;
-               rdfs:domain :Shot-event ;
-               rdfs:label "shot-taken-by" .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#substituted-player
-:substituted-player rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#substituting-player
-:substituting-player rdf:type owl:ObjectProperty .
-
-
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#winning-team
-:winning-team rdf:type owl:ObjectProperty ;
-              rdfs:domain :Game ;
-              rdfs:range :Team .
 
 
 #################################################################
@@ -535,7 +567,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :Center-ice-faceoff-spot rdf:type owl:Class ;
                          rdfs:subClassOf :Faceoff-spot ,
                                          [ rdf:type owl:Restriction ;
-                                           owl:onProperty :located-in ;
+                                           owl:onProperty :is-located-in ;
                                            owl:someValuesFrom :Neutral-zone
                                          ] .
 
@@ -587,7 +619,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :End-zone-faceoff-spot rdf:type owl:Class ;
                        rdfs:subClassOf :Faceoff-spot ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty :located-in ;
+                                         owl:onProperty :is-located-in ;
                                          owl:someValuesFrom :End-zone
                                        ] .
 
@@ -615,15 +647,15 @@ xsd:duration rdf:type rdfs:Datatype .
                            owl:someValuesFrom :Action-event
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :away-player ;
-                           owl:allValuesFrom :Player-on-roster
-                         ] ,
-                         [ rdf:type owl:Restriction ;
                            owl:onProperty :faceoff-at ;
                            owl:allValuesFrom :Faceoff-spot
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :home-player ;
+                           owl:onProperty :has-away-player ;
+                           owl:allValuesFrom :Player-on-roster
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :has-home-player ;
                            owl:allValuesFrom :Player-on-roster
                          ] ,
                          [ rdf:type owl:Restriction ;
@@ -632,7 +664,7 @@ xsd:duration rdf:type rdfs:Datatype .
                            owl:onClass :Faceoff-spot
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :winning-team ;
+                           owl:onProperty :has-winning-team ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Team
                          ] ;
@@ -648,7 +680,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-spot-CNE rdf:type owl:Class ;
                   rdfs:subClassOf :Neutral-zone-faceoff-spot ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :located-in ;
+                                    owl:onProperty :is-located-in ;
                                     owl:someValuesFrom :Zone-CNE
                                   ] .
 
@@ -657,7 +689,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-spot-CNW rdf:type owl:Class ;
                   rdfs:subClassOf :Neutral-zone-faceoff-spot ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :located-in ;
+                                    owl:onProperty :is-located-in ;
                                     owl:someValuesFrom :Zone-CNW
                                   ] .
 
@@ -666,7 +698,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-spot-CSE rdf:type owl:Class ;
                   rdfs:subClassOf :Neutral-zone-faceoff-spot ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :located-in ;
+                                    owl:onProperty :is-located-in ;
                                     owl:someValuesFrom :Zone-CSE
                                   ] .
 
@@ -675,7 +707,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-spot-CSW rdf:type owl:Class ;
                   rdfs:subClassOf :Neutral-zone-faceoff-spot ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :located-in ;
+                                    owl:onProperty :is-located-in ;
                                     owl:someValuesFrom :Zone-CSW
                                   ] .
 
@@ -684,11 +716,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-spot-NE rdf:type owl:Class ;
                  rdfs:subClassOf :End-zone-faceoff-spot ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :North-end-zone
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :Zone-NE
                                                         ]
                                                       ) ;
@@ -700,11 +732,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-spot-NW rdf:type owl:Class ;
                  rdfs:subClassOf :End-zone-faceoff-spot ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :North-end-zone
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :Zone-NW
                                                         ]
                                                       ) ;
@@ -716,11 +748,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-spot-SE rdf:type owl:Class ;
                  rdfs:subClassOf :End-zone-faceoff-spot ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :South-end-zone
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :Zone-SE
                                                         ]
                                                       ) ;
@@ -732,11 +764,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-spot-SW rdf:type owl:Class ;
                  rdfs:subClassOf :End-zone-faceoff-spot ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :South-end-zone
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :Zone-SW
                                                         ]
                                                       ) ;
@@ -754,7 +786,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-zone-C rdf:type owl:Class ;
                 rdfs:subClassOf :Faceoff-zone ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :located-in ;
+                                  owl:onProperty :is-located-in ;
                                   owl:someValuesFrom :Neutral-zone
                                 ] .
 
@@ -763,11 +795,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-zone-NE rdf:type owl:Class ;
                  rdfs:subClassOf :Faceoff-zone ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :North-end-zone
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :Zone-NE
                                                         ]
                                                       ) ;
@@ -779,11 +811,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-zone-NW rdf:type owl:Class ;
                  rdfs:subClassOf :Faceoff-zone ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :North-end-zone
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :Zone-NW
                                                         ]
                                                       ) ;
@@ -795,11 +827,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-zone-SE rdf:type owl:Class ;
                  rdfs:subClassOf :Faceoff-zone ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :South-end-zone
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :Zone-SE
                                                         ]
                                                       ) ;
@@ -811,11 +843,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Faceoff-zone-SW rdf:type owl:Class ;
                  rdfs:subClassOf :Faceoff-zone ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :South-end-zone
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :located-in ;
+                                                          owl:onProperty :is-located-in ;
                                                           owl:someValuesFrom :Zone-SW
                                                         ]
                                                       ) ;
@@ -1084,7 +1116,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :Neutral-zone rdf:type owl:Class ;
               rdfs:subClassOf :On-ice-zone ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :adjacent-to ;
+                                owl:onProperty :is-adjacent-to ;
                                 owl:allValuesFrom [ rdf:type owl:Class ;
                                                     owl:unionOf ( :North-end-zone
                                                                   :South-end-zone
@@ -1096,32 +1128,32 @@ xsd:duration rdf:type rdfs:Datatype .
                                                   ]
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :adjacent-to ;
+                                owl:onProperty :is-adjacent-to ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :North-end-zone
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :adjacent-to ;
+                                owl:onProperty :is-adjacent-to ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :South-end-zone
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :adjacent-to ;
+                                owl:onProperty :is-adjacent-to ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :Zone-NE
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :adjacent-to ;
+                                owl:onProperty :is-adjacent-to ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :Zone-NW
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :adjacent-to ;
+                                owl:onProperty :is-adjacent-to ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :Zone-SE
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :adjacent-to ;
+                                owl:onProperty :is-adjacent-to ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :Zone-SW
                               ] .
@@ -1131,7 +1163,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :Neutral-zone-faceoff-spot rdf:type owl:Class ;
                            rdfs:subClassOf :Faceoff-spot ,
                                            [ rdf:type owl:Restriction ;
-                                             owl:onProperty :located-in ;
+                                             owl:onProperty :is-located-in ;
                                              owl:someValuesFrom :Neutral-zone
                                            ] .
 
@@ -1140,7 +1172,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :North-end-zone rdf:type owl:Class ;
                 rdfs:subClassOf :End-zone ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:allValuesFrom [ rdf:type owl:Class ;
                                                       owl:unionOf ( :Neutral-zone
                                                                     :North-icing-zone
@@ -1150,22 +1182,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                                     ]
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Neutral-zone
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :North-icing-zone
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Zone-CNE
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Zone-CNW
                                 ] .
@@ -1175,11 +1207,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :North-goal-zone rdf:type owl:Class ;
                  rdfs:subClassOf :Goal-zone ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :located-in ;
+                                   owl:onProperty :is-located-in ;
                                    owl:someValuesFrom :North-end-zone
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :adjacent-to ;
+                                   owl:onProperty :is-adjacent-to ;
                                    owl:allValuesFrom [ rdf:type owl:Class ;
                                                        owl:unionOf ( :North-icing-zone
                                                                      :Zone-NE
@@ -1188,17 +1220,17 @@ xsd:duration rdf:type rdfs:Datatype .
                                                      ]
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :adjacent-to ;
+                                   owl:onProperty :is-adjacent-to ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :North-icing-zone
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :adjacent-to ;
+                                   owl:onProperty :is-adjacent-to ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Zone-NE
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :adjacent-to ;
+                                   owl:onProperty :is-adjacent-to ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Zone-NW
                                  ] .
@@ -1208,7 +1240,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :North-icing-zone rdf:type owl:Class ;
                   rdfs:subClassOf :Icing-zone ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:allValuesFrom [ rdf:type owl:Class ;
                                                         owl:unionOf ( :North-end-zone
                                                                       :North-goal-zone
@@ -1218,22 +1250,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                                       ]
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :North-end-zone
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :North-goal-zone
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :Zone-NE
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :Zone-NW
                                   ] .
@@ -1247,11 +1279,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#On-ice-object
 :On-ice-object rdf:type owl:Class ;
                rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                 owl:onProperty :belong-to ;
+                                 owl:onProperty :belongs-to ;
                                  owl:allValuesFrom :Arena
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :belong-to ;
+                                 owl:onProperty :belongs-to ;
                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                  owl:onClass :Arena
                                ] .
@@ -1259,7 +1291,16 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#On-ice-zone
 :On-ice-zone rdf:type owl:Class ;
-             rdfs:subClassOf :Zone .
+             rdfs:subClassOf :Zone ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :is-part-of ;
+                               owl:allValuesFrom :Rink
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :is-part-of ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Rink
+                             ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Overtime-period
@@ -1362,7 +1403,11 @@ xsd:duration rdf:type rdfs:Datatype .
                           rdf:type owl:Class
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :defendingNTeam-has-bench ;
+                          owl:onProperty :has-defendingN-team ;
+                          owl:allValuesFrom :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingNTeam-bench ;
                           owl:allValuesFrom [ rdf:type owl:Class ;
                                               owl:unionOf ( :Bench-zone-N
                                                             :Bench-zone-S
@@ -1370,7 +1415,11 @@ xsd:duration rdf:type rdfs:Datatype .
                                             ]
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :defendingSTeam-has-bench ;
+                          owl:onProperty :has-defendingS-team ;
+                          owl:allValuesFrom :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingSTeam-bench ;
                           owl:allValuesFrom [ rdf:type owl:Class ;
                                               owl:unionOf ( :Bench-zone-N
                                                             :Bench-zone-S
@@ -1379,14 +1428,11 @@ xsd:duration rdf:type rdfs:Datatype .
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :has-defendingN-team ;
-                          owl:allValuesFrom :Team
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Team
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingS-team ;
-                          owl:allValuesFrom :Team
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :defendingNTeam-has-bench ;
+                          owl:onProperty :has-defendingNTeam-bench ;
                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                           owl:onClass [ rdf:type owl:Class ;
                                         owl:unionOf ( :Bench-zone-N
@@ -1395,23 +1441,18 @@ xsd:duration rdf:type rdfs:Datatype .
                                       ]
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :defendingSTeam-has-bench ;
+                          owl:onProperty :has-defendingS-team ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Team
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-defendingSTeam-bench ;
                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                           owl:onClass [ rdf:type owl:Class ;
                                         owl:unionOf ( :Bench-zone-N
                                                       :Bench-zone-S
                                                     )
                                       ]
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingN-team ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Team
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :has-defendingS-team ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Team
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :has-order ;
@@ -1619,15 +1660,15 @@ xsd:duration rdf:type rdfs:Datatype .
 :Shift rdf:type owl:Class ;
        rdfs:subClassOf :Action-event ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :substituted-player ;
+                         owl:onProperty :has-substituted-player ;
                          owl:someValuesFrom :Player-on-roster
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :substituting-player ;
+                         owl:onProperty :has-substituting-player ;
                          owl:someValuesFrom :Player-on-roster
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :by-team ;
+                         owl:onProperty :is-by-team ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onClass :Team
                        ] ;
@@ -1643,17 +1684,17 @@ xsd:duration rdf:type rdfs:Datatype .
 :Shot-event rdf:type owl:Class ;
             rdfs:subClassOf :Action-event ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :attacking-team ;
+                              owl:onProperty :has-attacking-team ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass :Team
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :defending-team ;
+                              owl:onProperty :has-defending-team ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass :Team
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :shooting-player ;
+                              owl:onProperty :has-shooting-player ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass :Player-on-roster
                             ] ;
@@ -1670,7 +1711,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :South-end-zone rdf:type owl:Class ;
                 rdfs:subClassOf :End-zone ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:allValuesFrom [ rdf:type owl:Class ;
                                                       owl:unionOf ( :Neutral-zone
                                                                     :South-icing-zone
@@ -1680,22 +1721,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                                     ]
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Neutral-zone
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :South-icing-zone
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Zone-CSE
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :adjacent-to ;
+                                  owl:onProperty :is-adjacent-to ;
                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Zone-CSW
                                 ] .
@@ -1705,11 +1746,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :South-goal-zone rdf:type owl:Class ;
                  rdfs:subClassOf :Goal-zone ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :located-in ;
+                                   owl:onProperty :is-located-in ;
                                    owl:someValuesFrom :South-end-zone
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :adjacent-to ;
+                                   owl:onProperty :is-adjacent-to ;
                                    owl:allValuesFrom [ rdf:type owl:Class ;
                                                        owl:unionOf ( :South-icing-zone
                                                                      :Zone-SE
@@ -1718,17 +1759,17 @@ xsd:duration rdf:type rdfs:Datatype .
                                                      ]
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :adjacent-to ;
+                                   owl:onProperty :is-adjacent-to ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :South-icing-zone
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :adjacent-to ;
+                                   owl:onProperty :is-adjacent-to ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Zone-SE
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :adjacent-to ;
+                                   owl:onProperty :is-adjacent-to ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Zone-SW
                                  ] .
@@ -1738,7 +1779,7 @@ xsd:duration rdf:type rdfs:Datatype .
 :South-icing-zone rdf:type owl:Class ;
                   rdfs:subClassOf :Icing-zone ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:allValuesFrom [ rdf:type owl:Class ;
                                                         owl:unionOf ( :South-end-zone
                                                                       :South-goal-zone
@@ -1748,22 +1789,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                                       ]
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :South-end-zone
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :South-goal-zone
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :Zone-SE
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :adjacent-to ;
+                                    owl:onProperty :is-adjacent-to ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :Zone-SW
                                   ] .
@@ -1882,27 +1923,18 @@ xsd:duration rdf:type rdfs:Datatype .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Zone
-:Zone rdf:type owl:Class ;
-      rdfs:subClassOf [ rdf:type owl:Restriction ;
-                        owl:onProperty :part-of ;
-                        owl:allValuesFrom :Rink
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :part-of ;
-                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :Rink
-                      ] .
+:Zone rdf:type owl:Class .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Zone-CNE
 :Zone-CNE rdf:type owl:Class ;
           rdfs:subClassOf :Blocked-zone ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :located-in ;
+                            owl:onProperty :is-located-in ;
                             owl:someValuesFrom :Neutral-zone
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:allValuesFrom [ rdf:type owl:Class ;
                                                 owl:unionOf ( :North-end-zone
                                                               :Zone-CNW
@@ -1912,22 +1944,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :North-end-zone
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-CNW
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-CSE
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-NE
                           ] .
@@ -1937,11 +1969,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Zone-CNW rdf:type owl:Class ;
           rdfs:subClassOf :Blocked-zone ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :located-in ;
+                            owl:onProperty :is-located-in ;
                             owl:someValuesFrom :Neutral-zone
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:allValuesFrom [ rdf:type owl:Class ;
                                                 owl:unionOf ( :North-end-zone
                                                               :Zone-CNE
@@ -1951,22 +1983,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :North-end-zone
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-CNE
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-CSW
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-SW
                           ] .
@@ -1976,11 +2008,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Zone-CSE rdf:type owl:Class ;
           rdfs:subClassOf :Blocked-zone ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :located-in ;
+                            owl:onProperty :is-located-in ;
                             owl:someValuesFrom :Neutral-zone
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:allValuesFrom [ rdf:type owl:Class ;
                                                 owl:unionOf ( :South-end-zone
                                                               :Zone-CNE
@@ -1990,22 +2022,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :South-end-zone
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-CNE
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-CSW
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-SW
                           ] .
@@ -2015,11 +2047,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Zone-CSW rdf:type owl:Class ;
           rdfs:subClassOf :Blocked-zone ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :located-in ;
+                            owl:onProperty :is-located-in ;
                             owl:someValuesFrom :Neutral-zone
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:allValuesFrom [ rdf:type owl:Class ;
                                                 owl:unionOf ( :South-end-zone
                                                               :Zone-CNW
@@ -2029,22 +2061,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :South-end-zone
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-CNW
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-CSE
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :adjacent-to ;
+                            owl:onProperty :is-adjacent-to ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Zone-SW
                           ] .
@@ -2054,11 +2086,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Zone-NE rdf:type owl:Class ;
          rdfs:subClassOf :Blocked-zone ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :located-in ;
+                           owl:onProperty :is-located-in ;
                            owl:someValuesFrom :North-end-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:allValuesFrom [ rdf:type owl:Class ;
                                                owl:unionOf ( :Neutral-zone
                                                              :North-icing-zone
@@ -2068,22 +2100,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                              ]
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Neutral-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :North-icing-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-CNE
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-NW
                          ] .
@@ -2093,11 +2125,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Zone-NW rdf:type owl:Class ;
          rdfs:subClassOf :Blocked-zone ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :located-in ;
+                           owl:onProperty :is-located-in ;
                            owl:someValuesFrom :North-end-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:allValuesFrom [ rdf:type owl:Class ;
                                                owl:unionOf ( :Neutral-zone
                                                              :North-icing-zone
@@ -2107,22 +2139,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                              ]
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Neutral-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :North-icing-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-CNW
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-NE
                          ] .
@@ -2132,11 +2164,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Zone-SE rdf:type owl:Class ;
          rdfs:subClassOf :Blocked-zone ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :located-in ;
+                           owl:onProperty :is-located-in ;
                            owl:someValuesFrom :South-end-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:allValuesFrom [ rdf:type owl:Class ;
                                                owl:unionOf ( :Neutral-zone
                                                              :South-icing-zone
@@ -2146,22 +2178,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                              ]
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Neutral-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :South-icing-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-CSE
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-SW
                          ] .
@@ -2171,11 +2203,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :Zone-SW rdf:type owl:Class ;
          rdfs:subClassOf :Blocked-zone ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :located-in ;
+                           owl:onProperty :is-located-in ;
                            owl:someValuesFrom :South-end-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:allValuesFrom [ rdf:type owl:Class ;
                                                owl:unionOf ( :Neutral-zone
                                                              :South-icing-zone
@@ -2185,22 +2217,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                              ]
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Neutral-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :South-icing-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-CSW
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :adjacent-to ;
+                           owl:onProperty :is-adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-SE
                          ] .
