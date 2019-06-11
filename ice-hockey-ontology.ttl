@@ -456,10 +456,10 @@ xsd:duration rdf:type rdfs:Datatype .
                  rdfs:range xsd:int .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#penalizedDuration
-:penalizedDuration rdf:type owl:DatatypeProperty ;
-                   rdfs:domain :Penalty-event ;
-                   rdfs:range xsd:integer .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#penalized-duration
+:penalized-duration rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Penalty-event ;
+                    rdfs:range xsd:integer .
 
 
 #################################################################
@@ -1332,11 +1332,11 @@ xsd:duration rdf:type rdfs:Datatype .
                                  owl:onClass :Player
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :penalizedDuration ;
+                                 owl:onProperty :penalized-duration ;
                                  owl:allValuesFrom xsd:int
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :penalizedDuration ;
+                                 owl:onProperty :penalized-duration ;
                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                  owl:onDataRange xsd:int
                                ] ;
@@ -2100,6 +2100,10 @@ xsd:duration rdf:type rdfs:Datatype .
 :Zone-NW rdf:type owl:Class ;
          rdfs:subClassOf :Blocked-zone ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :located-in ;
+                           owl:someValuesFrom :North-end-zone
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :adjacent-to ;
                            owl:allValuesFrom [ rdf:type owl:Class ;
                                                owl:unionOf ( :Neutral-zone
@@ -2108,10 +2112,6 @@ xsd:duration rdf:type rdfs:Datatype .
                                                              :Zone-NE
                                                            )
                                              ]
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :located-in ;
-                           owl:allValuesFrom :North-end-zone
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :adjacent-to ;
@@ -2132,11 +2132,6 @@ xsd:duration rdf:type rdfs:Datatype .
                            owl:onProperty :adjacent-to ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :Zone-NE
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :located-in ;
-                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass :North-end-zone
                          ] .
 
 
