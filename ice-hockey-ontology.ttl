@@ -489,6 +489,7 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-period-time
 :has-period-time rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Game-event ;
                  rdfs:range xsd:duration .
 
 
