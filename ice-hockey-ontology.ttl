@@ -44,12 +44,16 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directly-followed-by
 :directly-followed-by rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf :followed-by ;
-                      owl:inverseOf :directly-preceded-by .
+                      owl:inverseOf :directly-preceded-by ;
+                      rdfs:domain :Game-event ;
+                      rdfs:range :Game-event .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#directly-preceded-by
 :directly-preceded-by rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf :preceded-by .
+                      rdfs:subPropertyOf :preceded-by ;
+                      rdfs:domain :Game-event ;
+                      rdfs:range :Game-event .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#faceoff-at
@@ -73,22 +77,30 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-player
 :has-away-player rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :has-faceoff-players .
+                 rdfs:subPropertyOf :has-faceoff-players ;
+                 rdfs:domain :Faceoff ;
+                 rdfs:range :Player .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-player-on-ice
 :has-away-player-on-ice rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf :has-player-on-ice .
+                        rdfs:subPropertyOf :has-player-on-ice ;
+                        rdfs:domain :Game-state ;
+                        rdfs:range :Player .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-team
 :has-away-team rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :has-participating-team .
+               rdfs:subPropertyOf :has-participating-team ;
+               rdfs:domain :Game ;
+               rdfs:range :Team .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-team-roster
 :has-away-team-roster rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf :has-team-roster .
+                      rdfs:subPropertyOf :has-team-roster ;
+                      rdfs:domain :Game ;
+                      rdfs:range :Team-roster-for-game .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defending-team
@@ -99,22 +111,30 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingN-team
 :has-defendingN-team rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf :has-period-defending-team .
+                     rdfs:subPropertyOf :has-period-defending-team ;
+                     rdfs:domain :Period ;
+                     rdfs:range :Team .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingNTeam-bench
 :has-defendingNTeam-bench rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf :has-defendingTeam-bench .
+                          rdfs:subPropertyOf :has-defendingTeam-bench ;
+                          rdfs:domain :Period ;
+                          rdfs:range :Bench-zone .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingS-team
 :has-defendingS-team rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf :has-period-defending-team .
+                     rdfs:subPropertyOf :has-period-defending-team ;
+                     rdfs:domain :Period ;
+                     rdfs:range :Team .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingSTeam-bench
 :has-defendingSTeam-bench rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf :has-defendingTeam-bench .
+                          rdfs:subPropertyOf :has-defendingTeam-bench ;
+                          rdfs:domain :Period ;
+                          rdfs:range :Bench-zone .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-defendingTeam-bench
@@ -150,22 +170,30 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-player
 :has-home-player rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :has-faceoff-players .
+                 rdfs:subPropertyOf :has-faceoff-players ;
+                 rdfs:domain :Faceoff ;
+                 rdfs:range :Player .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-player-on-ice
 :has-home-player-on-ice rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf :has-player-on-ice .
+                        rdfs:subPropertyOf :has-player-on-ice ;
+                        rdfs:domain :Game-state ;
+                        rdfs:range :Player .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-team
 :has-home-team rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :has-participating-team .
+               rdfs:subPropertyOf :has-participating-team ;
+               rdfs:domain :Game ;
+               rdfs:range :Team .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-team-roster
 :has-home-team-roster rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf :has-team-roster .
+                      rdfs:subPropertyOf :has-team-roster ;
+                      rdfs:domain :Game ;
+                      rdfs:range :Team-roster-for-game .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-participating-team
@@ -366,17 +394,23 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-adjusted-x-coordinate
 :has-adjusted-x-coordinate rdf:type owl:DatatypeProperty ;
-                           rdfs:subPropertyOf :has-puck-coordinates .
+                           rdfs:subPropertyOf :has-puck-coordinates ;
+                           rdfs:domain :Game-event ;
+                           rdfs:range xsd:double .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-adjusted-y-coordinate
 :has-adjusted-y-coordinate rdf:type owl:DatatypeProperty ;
-                           rdfs:subPropertyOf :has-puck-coordinates .
+                           rdfs:subPropertyOf :has-puck-coordinates ;
+                           rdfs:domain :Game-event ;
+                           rdfs:range xsd:double .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-team-goals
 :has-away-team-goals rdf:type owl:DatatypeProperty ;
-                     rdfs:subPropertyOf :has-team-goals .
+                     rdfs:subPropertyOf :has-team-goals ;
+                     rdfs:domain :Game-event ;
+                     rdfs:range xsd:int .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-date
@@ -387,12 +421,15 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-end-time
 :has-end-time rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :has-game-time .
+              rdfs:subPropertyOf :has-game-time ;
+              rdfs:domain :Game ;
+              rdfs:range xsd:dateTime .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-end-year
 :has-end-year rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :has-year .
+              rdfs:subPropertyOf :has-year ;
+              rdfs:domain :Season-for-league .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-game-time
@@ -409,13 +446,16 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-team-goals
 :has-home-team-goals rdf:type owl:DatatypeProperty ;
-                     rdfs:subPropertyOf :has-team-goals .
+                     rdfs:subPropertyOf :has-team-goals ;
+                     rdfs:domain :Game-event ;
+                     rdfs:range xsd:int .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-league-name
 :has-league-name rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf :has-name ;
-                 rdfs:domain :League .
+                 rdfs:domain :League ;
+                 rdfs:range xsd:string .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-length
@@ -455,7 +495,8 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-person-name
 :has-person-name rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf :has-name ;
-                 rdfs:domain :Person .
+                 rdfs:domain :Person ;
+                 rdfs:range xsd:string .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-puck-coordinates
@@ -467,17 +508,21 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-shirt-number
 :has-shirt-number rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :Player-on-roster .
+                  rdfs:domain :Player-on-roster ;
+                  rdfs:range xsd:int .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-start-time
 :has-start-time rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf :has-game-time .
+                rdfs:subPropertyOf :has-game-time ;
+                rdfs:domain :Game ;
+                rdfs:range xsd:dateTime .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-start-year
 :has-start-year rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf :has-year .
+                rdfs:subPropertyOf :has-year ;
+                rdfs:domain :Season-for-league .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-goals
@@ -489,7 +534,8 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-name
 :has-team-name rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf :has-name ;
-               rdfs:domain :Team .
+               rdfs:domain :Team ;
+               rdfs:range xsd:string .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-time
@@ -501,17 +547,22 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-width
 :has-width rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Rink .
+           rdfs:domain :Rink ;
+           rdfs:range xsd:double .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-x-coordinate
 :has-x-coordinate rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf :has-puck-coordinates .
+                  rdfs:subPropertyOf :has-puck-coordinates ;
+                  rdfs:domain :Game-event ;
+                  rdfs:range xsd:double .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-y-coordinate
 :has-y-coordinate rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf :has-puck-coordinates .
+                  rdfs:subPropertyOf :has-puck-coordinates ;
+                  rdfs:domain :Game-event ;
+                  rdfs:range xsd:double .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-year
