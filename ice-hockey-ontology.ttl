@@ -420,6 +420,16 @@ xsd:duration rdf:type rdfs:Datatype .
                      rdfs:range xsd:int .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-birthcity
+:has-birthcity rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-birthdate
+:has-birthdate rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:date .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-date
 :has-date rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
@@ -473,6 +483,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-name
 :has-name rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-nationality
+:has-nationality rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-order
@@ -1590,7 +1605,34 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Player
 :Player rdf:type owl:Class ;
-        rdfs:subClassOf :Person .
+        rdfs:subClassOf :Person ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-birthcity ;
+                          owl:allValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-birthdate ;
+                          owl:allValuesFrom xsd:date
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-nationality ;
+                          owl:allValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-nationality ;
+                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-birthcity ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has-birthdate ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:date
+                        ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Player-on-roster
