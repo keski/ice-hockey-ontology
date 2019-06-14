@@ -392,6 +392,13 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-abbreviation
+:has-abbreviation rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :has-name ;
+                  rdfs:domain :Team ;
+                  rdfs:range xsd:string .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-adjusted-x-coordinate
 :has-adjusted-x-coordinate rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf :has-puck-coordinates ;
@@ -524,6 +531,12 @@ xsd:duration rdf:type rdfs:Datatype .
 :has-start-year rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf :has-year ;
                 rdfs:domain :Season-for-league .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-city
+:has-team-city rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Team ;
+               rdfs:range xsd:string .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-goals
