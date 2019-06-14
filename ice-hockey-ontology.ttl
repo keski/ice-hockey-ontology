@@ -162,6 +162,12 @@ xsd:duration rdf:type rdfs:Datatype .
                 rdfs:range :Game-state .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-head-coach
+:has-head-coach rdf:type owl:ObjectProperty ;
+                rdfs:domain :Team ;
+                rdfs:range :Head-coach .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-arena
 :has-home-arena rdf:type owl:ObjectProperty ;
                 rdfs:domain :Team ;
@@ -1978,12 +1984,21 @@ xsd:duration rdf:type rdfs:Datatype .
                         owl:someValuesFrom :Season-for-league
                       ] ,
                       [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-head-coach ;
+                        owl:allValuesFrom :Head-coach
+                      ] ,
+                      [ rdf:type owl:Restriction ;
                         owl:onProperty :has-home-arena ;
                         owl:allValuesFrom :Arena
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :plays-in-season-for-league ;
                         owl:allValuesFrom :Season-for-league
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has-head-coach ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Head-coach
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :has-home-arena ;
