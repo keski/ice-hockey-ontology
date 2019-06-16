@@ -341,6 +341,10 @@ xsd:duration rdf:type rdfs:Datatype .
                rdfs:range :Shot-type .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-stoppage-type
+:has-stoppage-type rdf:type owl:ObjectProperty .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-substituted-player
 :has-substituted-player rdf:type owl:ObjectProperty ;
                         rdfs:domain :Shift-event ;
@@ -672,7 +676,7 @@ xsd:duration rdf:type rdfs:Datatype .
                                                                            owl:unionOf ( :Action-event
                                                                                          :End-event
                                                                                          :Penalty-event
-                                                                                         :Stoppage
+                                                                                         :Stoppage-event
                                                                                        )
                                                                          ]
                                                      ]
@@ -2105,9 +2109,22 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:label "Start-event" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Stoppage
-:Stoppage rdf:type owl:Class ;
-          rdfs:subClassOf :Game-event .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Stoppage-event
+:Stoppage-event rdf:type owl:Class ;
+                rdfs:subClassOf :Game-event ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-stoppage-type ;
+                                  owl:allValuesFrom :Stoppage-type
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-stoppage-type ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Stoppage-type
+                                ] .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Stoppage-type
+:Stoppage-type rdf:type owl:Class .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Takeaway
@@ -2569,6 +2586,11 @@ xsd:duration rdf:type rdfs:Datatype .
                                   :Penalty .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Goalie-stopped
+:Goalie-stopped rdf:type owl:NamedIndividual ,
+                         :Stoppage-type .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#High-Sticking
 :High-Sticking rdf:type owl:NamedIndividual ,
                         :Penalty-type .
@@ -2577,6 +2599,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Holding
 :Holding rdf:type owl:NamedIndividual ,
                   :Penalty-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Icing
+:Icing rdf:type owl:NamedIndividual ,
+                :Stoppage-type .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Interference
@@ -2604,6 +2631,16 @@ xsd:duration rdf:type rdfs:Datatype .
                              :Penalty .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Net-off
+:Net-off rdf:type owl:NamedIndividual ,
+                  :Stoppage-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Offside
+:Offside rdf:type owl:NamedIndividual ,
+                  :Stoppage-type .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#PP-5-3
 :PP-5-3 rdf:type owl:NamedIndividual ,
                  :Power-play .
@@ -2612,6 +2649,26 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#PP-5-4
 :PP-5-4 rdf:type owl:NamedIndividual ,
                  :Power-play .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Puck-frozen
+:Puck-frozen rdf:type owl:NamedIndividual ,
+                      :Stoppage-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Puck-in-benches
+:Puck-in-benches rdf:type owl:NamedIndividual ,
+                          :Stoppage-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Puck-in-crowd
+:Puck-in-crowd rdf:type owl:NamedIndividual ,
+                        :Stoppage-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Puck-in-netting
+:Puck-in-netting rdf:type owl:NamedIndividual ,
+                          :Stoppage-type .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#SH-3-5
@@ -2639,6 +2696,11 @@ xsd:duration rdf:type rdfs:Datatype .
                     :Shot-type .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#TV-timeout
+:TV-timeout rdf:type owl:NamedIndividual ,
+                     :Stoppage-type .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Tip-in-shot
 :Tip-in-shot rdf:type owl:NamedIndividual ,
                       :Shot-type .
@@ -2652,6 +2714,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Tripping
 :Tripping rdf:type owl:NamedIndividual ,
                    :Penalty-type .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Video-review
+:Video-review rdf:type owl:NamedIndividual ,
+                       :Stoppage-type .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Wrap-around-shot
