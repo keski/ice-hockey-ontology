@@ -103,6 +103,12 @@ xsd:duration rdf:type rdfs:Datatype .
                       rdfs:range :Team-roster-for-game .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-blocking-player
+:has-blocking-player rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Blocked-shot-event ;
+                     rdfs:range :Player .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-bloked-player
 :has-bloked-player rdf:type owl:ObjectProperty ;
                    rdfs:domain :Blocked-shot-event ;
@@ -676,8 +682,17 @@ xsd:duration rdf:type rdfs:Datatype .
 :Blocked-shot-event rdf:type owl:Class ;
                     rdfs:subClassOf :Shot-event ,
                                     [ rdf:type owl:Restriction ;
+                                      owl:onProperty :has-blocking-player ;
+                                      owl:allValuesFrom :Player
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
                                       owl:onProperty :has-bloked-player ;
                                       owl:allValuesFrom :Player
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :has-blocking-player ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Player
                                     ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :has-bloked-player ;
