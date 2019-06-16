@@ -58,7 +58,7 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#faceoff-at
 :faceoff-at rdf:type owl:ObjectProperty ;
-            rdfs:domain :Faceoff ;
+            rdfs:domain :Faceoff-event ;
             rdfs:range :Faceoff-spot .
 
 
@@ -78,7 +78,7 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-player
 :has-away-player rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :has-faceoff-players ;
-                 rdfs:domain :Faceoff ;
+                 rdfs:domain :Faceoff-event ;
                  rdfs:range :Player .
 
 
@@ -157,7 +157,7 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-faceoff-players
 :has-faceoff-players rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Faceoff ;
+                     rdfs:domain :Faceoff-event ;
                      rdfs:range :Player .
 
 
@@ -176,13 +176,13 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-giveaway-player
 :has-giveaway-player rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Giveaway ;
+                     rdfs:domain :Giveaway-event ;
                      rdfs:range :Player .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-giveaway-team
 :has-giveaway-team rdf:type owl:ObjectProperty ;
-                   rdfs:domain :Giveaway ;
+                   rdfs:domain :Giveaway-event ;
                    rdfs:range :Team .
 
 
@@ -190,6 +190,24 @@ xsd:duration rdf:type rdfs:Datatype .
 :has-head-coach rdf:type owl:ObjectProperty ;
                 rdfs:domain :Team ;
                 rdfs:range :Head-coach .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-hittee
+:has-hittee rdf:type owl:ObjectProperty ;
+            rdfs:domain :Hit-event ;
+            rdfs:range :Player .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-hitter
+:has-hitter rdf:type owl:ObjectProperty ;
+            rdfs:domain :Hit-event ;
+            rdfs:range :Player .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-hitting-team
+:has-hitting-team rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Hit-event ;
+                  rdfs:range :Team .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-arena
@@ -201,7 +219,7 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-player
 :has-home-player rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :has-faceoff-players ;
-                 rdfs:domain :Faceoff ;
+                 rdfs:domain :Faceoff-event ;
                  rdfs:range :Player .
 
 
@@ -319,13 +337,13 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-substituted-player
 :has-substituted-player rdf:type owl:ObjectProperty ;
-                        rdfs:domain :Shift ;
+                        rdfs:domain :Shift-event ;
                         rdfs:range :Player-on-roster .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-substituting-player
 :has-substituting-player rdf:type owl:ObjectProperty ;
-                         rdfs:domain :Shift ;
+                         rdfs:domain :Shift-event ;
                          rdfs:range :Player-on-roster .
 
 
@@ -371,7 +389,7 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#is-by-team
 :is-by-team rdf:type owl:ObjectProperty ;
-            rdfs:domain :Shift ;
+            rdfs:domain :Shift-event ;
             rdfs:range :Team .
 
 
@@ -805,36 +823,35 @@ xsd:duration rdf:type rdfs:Datatype .
        rdfs:label "Event" .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Faceoff
-:Faceoff rdf:type owl:Class ;
-         rdfs:subClassOf :Game-event ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :directly-followed-by ;
-                           owl:someValuesFrom :Action-event
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :faceoff-at ;
-                           owl:allValuesFrom :Faceoff-spot
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :has-away-player ;
-                           owl:allValuesFrom :Player-on-roster
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :has-home-player ;
-                           owl:allValuesFrom :Player-on-roster
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :faceoff-at ;
-                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass :Faceoff-spot
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :has-winning-team ;
-                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass :Team
-                         ] ;
-         rdfs:label "Faceoff" .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Faceoff-event
+:Faceoff-event rdf:type owl:Class ;
+               rdfs:subClassOf :Game-event ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :directly-followed-by ;
+                                 owl:someValuesFrom :Action-event
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :faceoff-at ;
+                                 owl:allValuesFrom :Faceoff-spot
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :has-away-player ;
+                                 owl:allValuesFrom :Player-on-roster
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :has-home-player ;
+                                 owl:allValuesFrom :Player-on-roster
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :faceoff-at ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Faceoff-spot
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :has-winning-team ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Team
+                               ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Faceoff-spot
@@ -1194,28 +1211,27 @@ xsd:duration rdf:type rdfs:Datatype .
                  rdfs:subClassOf :Person .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Giveaway
-:Giveaway rdf:type owl:Class ;
-          rdfs:subClassOf :Action-event ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :has-giveaway-player ;
-                            owl:allValuesFrom :Player
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :has-giveaway-team ;
-                            owl:allValuesFrom :Team
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :has-giveaway-player ;
-                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass :Player
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :has-giveaway-team ;
-                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass :Team
-                          ] ;
-          rdfs:label "Giveaway" .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Giveaway-event
+:Giveaway-event rdf:type owl:Class ;
+                rdfs:subClassOf :Action-event ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-giveaway-player ;
+                                  owl:allValuesFrom :Player
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-giveaway-team ;
+                                  owl:allValuesFrom :Team
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-giveaway-player ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Player
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-giveaway-team ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Team
+                                ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Goal-frame
@@ -1248,10 +1264,36 @@ xsd:duration rdf:type rdfs:Datatype .
             rdfs:subClassOf :Coach .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Hit
-:Hit rdf:type owl:Class ;
-     rdfs:subClassOf :Action-event ;
-     rdfs:label "Hit" .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Hit-event
+:Hit-event rdf:type owl:Class ;
+           rdfs:subClassOf :Action-event ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :has-hittee ;
+                             owl:allValuesFrom :Player
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :has-hitter ;
+                             owl:allValuesFrom :Player
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :has-hitting-team ;
+                             owl:allValuesFrom :Team
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :has-hittee ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Player
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :has-hitter ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Player
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :has-hitting-team ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Team
+                           ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Icing-zone
@@ -1857,23 +1899,22 @@ xsd:duration rdf:type rdfs:Datatype .
                                    ] .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Shift
-:Shift rdf:type owl:Class ;
-       rdfs:subClassOf :Action-event ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :has-substituted-player ;
-                         owl:someValuesFrom :Player-on-roster
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :has-substituting-player ;
-                         owl:someValuesFrom :Player-on-roster
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :is-by-team ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Team
-                       ] ;
-       rdfs:label "Shift" .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Shift-event
+:Shift-event rdf:type owl:Class ;
+             rdfs:subClassOf :Action-event ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :has-substituted-player ;
+                               owl:someValuesFrom :Player-on-roster
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :has-substituting-player ;
+                               owl:someValuesFrom :Player-on-roster
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :is-by-team ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Team
+                             ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Short-handed
@@ -2037,7 +2078,7 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:subClassOf :Game-event ,
                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                       owl:onProperty :directly-followed-by ;
-                                                      owl:allValuesFrom :Faceoff
+                                                      owl:allValuesFrom :Faceoff-event
                                                     ]
                                                     [ rdf:type owl:Restriction ;
                                                       owl:onProperty :directly-followed-by ;
