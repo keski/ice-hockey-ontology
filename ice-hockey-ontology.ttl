@@ -287,6 +287,12 @@ xsd:duration rdf:type rdfs:Datatype .
                      rdfs:range :Player .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-shot-type
+:has-shot-type rdf:type owl:ObjectProperty ;
+               rdfs:domain :Shot-event ;
+               rdfs:range :Shot-type .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-substituted-player
 :has-substituted-player rdf:type owl:ObjectProperty ;
                         rdfs:domain :Shift ;
@@ -1820,6 +1826,18 @@ xsd:duration rdf:type rdfs:Datatype .
             rdfs:subClassOf :Action-event ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :has-attacking-team ;
+                              owl:allValuesFrom :Team
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :has-defending-team ;
+                              owl:allValuesFrom :Team
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :has-shot-type ;
+                              owl:allValuesFrom :Shot-type
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :has-attacking-team ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass :Team
                             ] ,
@@ -1832,6 +1850,11 @@ xsd:duration rdf:type rdfs:Datatype .
                               owl:onProperty :has-shooting-player ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass :Player-on-roster
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :has-shot-type ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Shot-type
                             ] ;
             rdfs:label "Shot-event" .
 
