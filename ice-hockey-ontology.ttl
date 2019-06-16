@@ -69,6 +69,12 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:range :Game-event .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-assist
+:has-assist rdf:type owl:ObjectProperty ;
+            rdfs:domain :Scoring-shot-event ;
+            rdfs:range :Player .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-attacking-team
 :has-attacking-team rdf:type owl:ObjectProperty ;
                     rdfs:domain :Shot-event ;
@@ -1844,7 +1850,16 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Scoring-shot-event
 :Scoring-shot-event rdf:type owl:Class ;
-                    rdfs:subClassOf :Shot-on-goal-event .
+                    rdfs:subClassOf :Shot-on-goal-event ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :has-assist ;
+                                      owl:allValuesFrom :Player
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :has-assist ;
+                                      owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Player
+                                    ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Scout
