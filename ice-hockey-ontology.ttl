@@ -357,6 +357,18 @@ xsd:duration rdf:type rdfs:Datatype .
                          rdfs:range :Player-on-roster .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-takeaway-player
+:has-takeaway-player rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Takeaway-event ;
+                     rdfs:range :Player .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-takeaway-team
+:has-takeaway-team rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Takeaway-event ;
+                   rdfs:range :Player .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-disposition
 :has-team-disposition rdf:type owl:ObjectProperty ;
                       rdfs:domain :Game-state ;
@@ -2127,10 +2139,27 @@ xsd:duration rdf:type rdfs:Datatype .
 :Stoppage-type rdf:type owl:Class .
 
 
-###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Takeaway
-:Takeaway rdf:type owl:Class ;
-          rdfs:subClassOf :Action-event ;
-          rdfs:label "Takeaway" .
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Takeaway-event
+:Takeaway-event rdf:type owl:Class ;
+                rdfs:subClassOf :Action-event ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-takeaway-player ;
+                                  owl:allValuesFrom :Player
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-takeaway-team ;
+                                  owl:allValuesFrom :Team
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-takeaway-player ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Player
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-takeaway-team ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Team
+                                ] .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Team
