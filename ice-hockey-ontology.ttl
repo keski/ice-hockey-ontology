@@ -2605,6 +2605,11 @@ xsd:duration rdf:type rdfs:Datatype .
                    :Even .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Even-6-6
+:Even-6-6 rdf:type owl:NamedIndividual ,
+                   :Even .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#Fighting
 :Fighting rdf:type owl:NamedIndividual ,
                    :Penalty-type .
@@ -2670,6 +2675,11 @@ xsd:duration rdf:type rdfs:Datatype .
                   :Stoppage-type .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#PP-4-3
+:PP-4-3 rdf:type owl:NamedIndividual ,
+                 :Power-play .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#PP-5-3
 :PP-5-3 rdf:type owl:NamedIndividual ,
                  :Power-play .
@@ -2677,6 +2687,21 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#PP-5-4
 :PP-5-4 rdf:type owl:NamedIndividual ,
+                 :Power-play .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#PP-6-3
+:PP-6-3 rdf:type owl:NamedIndividual ,
+                 :Power-play .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#PP-6-4
+:PP-6-4 rdf:type owl:NamedIndividual ,
+                 :Power-play .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#PP-6-5
+:PP-6-5 rdf:type owl:NamedIndividual ,
                  :Power-play .
 
 
@@ -2700,13 +2725,33 @@ xsd:duration rdf:type rdfs:Datatype .
                           :Stoppage-type .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#SH-3-4
+:SH-3-4 rdf:type owl:NamedIndividual ,
+                 :Short-handed .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#SH-3-5
 :SH-3-5 rdf:type owl:NamedIndividual ,
                  :Short-handed .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#SH-3-6
+:SH-3-6 rdf:type owl:NamedIndividual ,
+                 :Short-handed .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#SH-4-5
 :SH-4-5 rdf:type owl:NamedIndividual ,
+                 :Short-handed .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#SH-4-6
+:SH-4-6 rdf:type owl:NamedIndividual ,
+                 :Short-handed .
+
+
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#SH-5-6
+:SH-5-6 rdf:type owl:NamedIndividual ,
                  :Short-handed .
 
 
