@@ -324,15 +324,11 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-season
 :has-season rdf:type owl:ObjectProperty ;
-            owl:inverseOf :is-season-for ;
-            rdfs:domain :League ;
             rdfs:range :Season-for-league .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-season-game
 :has-season-game rdf:type owl:ObjectProperty ;
-                 owl:inverseOf :is-game-for-season ;
-                 rdfs:domain :Season-for-league ;
                  rdfs:range :Game .
 
 
