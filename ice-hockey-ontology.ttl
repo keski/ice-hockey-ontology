@@ -499,7 +499,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-away-team-goals
 :has-away-team-goals rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf :has-team-goals ;
-                     rdfs:domain :Game-event ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :Game-event
+                                                 :Game-state
+                                               )
+                                 ] ;
                      rdfs:range xsd:int .
 
 
@@ -522,7 +526,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-end-time
 :has-end-time rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf :has-game-time ;
-              rdfs:domain :Game ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :Game
+                                          :Period
+                                        )
+                          ] ;
               rdfs:range xsd:dateTime .
 
 
@@ -534,20 +542,32 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-game-time
 :has-game-time rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Game ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( :Game
+                                           :Period
+                                         )
+                           ] ;
                rdfs:range xsd:dateTime .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-goal-differential
 :has-goal-differential rdf:type owl:DatatypeProperty ;
-                       rdfs:domain :Game-event ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( :Game-event
+                                                   :Game-state
+                                                 )
+                                   ] ;
                        rdfs:range xsd:int .
 
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-home-team-goals
 :has-home-team-goals rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf :has-team-goals ;
-                     rdfs:domain :Game-event ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :Game-event
+                                                 :Game-state
+                                               )
+                                 ] ;
                      rdfs:range xsd:int .
 
 
@@ -621,7 +641,11 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-start-time
 :has-start-time rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf :has-game-time ;
-                rdfs:domain :Game ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :Game
+                                            :Period
+                                          )
+                            ] ;
                 rdfs:range xsd:dateTime .
 
 
@@ -639,7 +663,11 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-team-goals
 :has-team-goals rdf:type owl:DatatypeProperty ;
-                rdfs:domain :Game-event ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :Game-event
+                                            :Game-state
+                                          )
+                            ] ;
                 rdfs:range xsd:int .
 
 
