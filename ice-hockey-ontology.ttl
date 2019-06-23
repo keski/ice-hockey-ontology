@@ -167,6 +167,13 @@ xsd:duration rdf:type rdfs:Datatype .
                      rdfs:range :Player .
 
 
+###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-faceoff-winning-team
+:has-faceoff-winning-team rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:domain :Faceoff-event ;
+                          rdfs:range :Team .
+
+
 ###  http://www.ida.liu.se/ontologies/ice-hockey-ontology#has-game-event
 :has-game-event rdf:type owl:ObjectProperty ;
                 rdfs:domain :Game ;
@@ -870,7 +877,7 @@ xsd:duration rdf:type rdfs:Datatype .
                                  owl:onClass :Faceoff-spot
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :has-winning-team ;
+                                 owl:onProperty :has-faceoff-winning-team ;
                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                  owl:onClass :Team
                                ] .
